@@ -1,1 +1,57 @@
 Edit: {{id}}
+
+
+<div>
+    <form action="/timeline/{{timeline._id}}" method="POST">
+        <h3>Edit your timeline</h3>
+        <div>
+            <label for="title">Title</label>
+            <input id="title" value="{{timeline.title}}" type="text" name="title" placeholder="Bootcamp web dev">
+
+        </div>
+
+        {{!-- <div>
+            <label for="scope">Change the scope</label>
+            <select id="scope" name="scope">
+                <option value="public">Public</option>
+                <option value="private">Private</option>
+            </select>
+        </div> --}}
+{{!-- 
+        <div>
+            <label for="template">Change the template</label>
+            <select id="template" name="template">
+                <option value="vertical_gantt">Vertical Gantt</option>
+                <option value="vertical_flat">Vertical Flat</option>
+                <option value="horizontal"> Horizontal</option>
+            </select>
+        </div> --}}
+
+        <div>
+            <label for="description">Description</label>
+            <textarea id="description"name="description" >{{timeline.description}}</textarea>
+
+        </div>
+
+
+
+        <button type="text">Save</button>
+        
+    </form>
+
+    <form action="/timeline" method ="GET" >
+<button type="text">See the timeline</button>
+</form>
+
+<form action ="/timeline/{{timeline._id}}/delete" method="POST">
+<button type="text">Delete the timeline</button>
+</form>
+
+</div>
+
+
+<div>
+    
+</div>
+
+

@@ -36,20 +36,35 @@ router.get(`/:id`, (req, res, next) => {
 // Edit
 
 router.get(`/:id/edit`, (req, res, next) => {
-  res.render(`timeline/edit`, { id: req.params.id });
-  console.log(`/timeline/${req.params.id}/edit`);
+  Timeline.findById(req.params.id) 
+  .then((dbRes)=>{
+res.render(`timeline/edit`, {
+  timeline : dbRes 
+});
+  })
+  .catch((err)=>console.log(err))
+
+  // console.log(`/timeline/${req.params.id}/edit`);
 });
 
 // Update
 
 router.post(`/:id`, (req, res, next) => {
-  console.log(`Post: /timeline/${req.params.id}`);
+  Timeline.findByIdAndUpdate(req.params.id, req.body)
+  .then((dbRes)=>{
+    res.redirect(`/timeline/${req.params.id}/edit`)
+  })
+  // console.log(`Post: /timeline/${req.params.id}`);
 });
 
 // Destroy
 
-router.delete(`/:id`, (req, res, next) => {
-  console.log(`Delete: /timeline/${req.params.id}`);
+router.post(`/:id/delete`, (req, res, next) => {
+  Timeline.findByIdAndDelete(req.params.id)
+  .then((dbRes)=>{
+    res.redirect(`/timeline`)
+  })
+  // console.log(`Delete: /timeline/${req.params.id}`);
 });
 
 module.exports = router;
