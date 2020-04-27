@@ -45,6 +45,13 @@ app.use(express.json());
 app.use(flash());
 app.use(cookieParser());
 
+app.use((req, res, next) => {
+	if (req.session.currentUser) {
+		console.log('woohoo logged !');
+	}
+	next();
+});
+
 app.use('/', require('./routes/home'));
 app.use('/timeline', require('./routes/timeline'));
 app.use('/event', require('./routes/event'));
