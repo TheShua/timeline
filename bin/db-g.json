@@ -1,0 +1,124 @@
+{
+	"user": [
+		{
+			"id": 1,
+			"name": "Guillaume",
+			"email": "mail@domain.fr",
+			"password": "12345",
+			"creation_time": "",
+			"role": "admin"
+		}
+	],
+	"category": [
+		{
+			"id": 1,
+			"title": "fight",
+			"color": "red"
+		},
+		{
+			"id": 2,
+			"title": "new_encounter",
+			"color": "green"
+		},
+		{
+			"id": 3,
+			"title": "hairstyle",
+			"color": "pink"
+		}
+	],
+	"timeline": [
+		{
+			"id": 1,
+			"title": "Scott Pilgrim vs The World",
+			"creation_date": "",
+			"date_edited": "",
+			"author": 1,
+			"editors": [],
+			"scope": "private",
+			"template": "vertical_flat",
+			"category": [1, 2, 3],
+			"description": "The story of the movie.",
+			"unit": "minutes",
+			"image": ""
+		}
+	],
+	"events": [
+		{
+			"id": 1,
+			"timeline": 1,
+			"creation_date": "",
+			"date_edited": "",
+			"author": 1,
+			"title": "Ramona Flowers",
+			"category": 2,
+			"content": "Scott meets Ramona at the party",
+			"time_start": 13
+		},
+		{
+			"id": 2,
+			"timeline": 1,
+			"creation_date": "",
+			"date_edited": "",
+			"author": 1,
+			"title": "Ramona is pink",
+			"category": 3,
+			"content": "Ramona's got a pink hairstyle",
+			"time_start": 13
+		},
+		{
+			"id": 3,
+			"timeline": 1,
+			"creation_date": "",
+			"date_edited": "",
+			"author": 1,
+			"title": "Matthew Pattel",
+			"category": 2,
+			"content": "Scott meets Matthew Pattel at the bar.",
+			"time_start": 30
+		},
+		{
+			"id": 4,
+			"timeline": 1,
+			"creation_date": "",
+			"date_edited": "",
+			"author": 1,
+			"title": "Fight vs M.Pattel",
+			"category": 1,
+			"content": "Beginning of the fight bollywood style",
+			"time_start": 31
+		},
+		{
+			"id": 5,
+			"timeline": 1,
+			"creation_date": "",
+			"date_edited": "",
+			"author": 1,
+			"title": "Ramona blue",
+			"category": 3,
+			"content": "Ramona rang at the door with blue hairstyle",
+			"time_start": 41
+		},
+		{
+			"id": 6,
+			"timeline": 1,
+			"creation_date": "",
+			"date_edited": "",
+			"author": 1,
+			"title": "Lucas Lee",
+			"category": 2,
+			"content": "Lucas get out of the van",
+			"time_start": 45
+		},
+		{
+			"id": 7,
+			"timeline": 1,
+			"creation_date": "",
+			"date_edited": "",
+			"author": 1,
+			"title": "Fight vs L.Lee",
+			"category": 2,
+			"content": "Fight beginning right ahead",
+			"time_start": 46
+		}
+	]
+}
