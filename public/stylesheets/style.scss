@@ -1,6 +1,10 @@
-.testing-sass {
-  background: green;
-  .does-this-work {
-    background: blue;
-  }
+.container {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.event-card {
+  border: 1px solid black;
+  margin-bottom: 5px;
 }
