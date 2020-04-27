@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{#each stylesheets}}
-        <link rel="stylesheet" href="/stylesheets/{{this}}">
-    {{/each}}
+    <title>Timeline</title>
 
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    {{#each stylesheets}}
+    <link rel="stylesheet" href="/stylesheets/{{this}}">
+    {{/each}}
 
     {{#each scripts}}
     <script src="/scripts/{{this}}" type="module"></script>
     {{/each}}
-    
-    <title>Timeline</title>
 </head>
+
 <body>
-    
     {{{body}}}
 </body>
+
 </html>

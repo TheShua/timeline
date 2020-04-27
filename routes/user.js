@@ -52,7 +52,8 @@ router.post(`/signup`, (req, res, next) => {
 				// Hashing the password
 				const salt = bcrypt.genSaltSync(bcryptSalt);
 				const hashPass = bcrypt.hashSync(password, salt);
-				User.create({ name, email, hashPass })
+
+				User.create({ name, email, password: hashPass })
 					.then((dbResult) => {
 						req.flash('created', `Account created ! Welcome ${name}`);
 						res.redirect('/user/login');
@@ -99,6 +100,7 @@ router.post(`/login`, (req, res, next) => {
 
 			// Checking if the passwords matchs
 			if (bcrypt.compareSync(password, user.password)) {
+				req.session.currentUser = user;
 				req.flash('success', `Welcome ${user.name} !`);
 				res.redirect('/timeline');
 			} else {
