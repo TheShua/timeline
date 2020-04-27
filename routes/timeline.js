@@ -1,5 +1,6 @@
 const express = require(`express`);
 const router = express.Router();
+const Timeline = require("../models/timeline")
 
 // Index
 
@@ -11,14 +12,18 @@ router.get(`/`, (req, res, next) => {
 // New
 
 router.get(`/new`, (req, res, next) => {
-  res.render(`timeline/new`);
+res.render(`timeline/new`)
   console.log(`/timeline/new`);
 });
 
 // Create
 
 router.post(`/`, (req, res, next) => {
+  Timeline.create(req.body)
+    .then((dbResult) => {
+      res.redirect(`/timeline/${dbResult._id}/edit`)
   console.log(`Post: /timeline`);
+})
 });
 
 // Show
