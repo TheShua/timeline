@@ -1,33 +1,33 @@
 {
-	"name": "timeline",
-	"version": "1.0.0",
-	"description": "",
-	"main": "app.js",
-	"scripts": {
-		"dev": "nodemon ./app.js hbs,js",
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/TheShua/timeline.git"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/TheShua/timeline/issues"
-	},
-	"homepage": "https://github.com/TheShua/timeline#readme",
-	"dependencies": {
-		"bcrypt": "^4.0.1",
-		"connect-flash": "^0.1.1",
-		"connect-mongo": "^3.2.0",
-		"cookie-parser": "^1.4.5",
-		"dotenv": "^8.2.0",
-		"express": "^4.17.1",
-		"express-session": "^1.17.1",
-		"hbs": "^4.1.1",
-		"mongoose": "^5.9.10",
-		"node-sass-middleware": "^0.11.0"
-	}
+  "name": "timeline",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon ./app.js hbs,js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheShua/timeline.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheShua/timeline/issues"
+  },
+  "homepage": "https://github.com/TheShua/timeline#readme",
+  "dependencies": {
+    "bcrypt": "^4.0.1",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^3.2.0",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "hbs": "^4.1.1",
+    "mongoose": "^5.9.10",
+    "node-sass-middleware": "^0.11.0"
+  }
 }

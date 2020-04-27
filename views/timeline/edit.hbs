@@ -1,13 +1,10 @@
-Edit: {{id}}
-
-
-<div>
+<h2>{{timeline.title}}</h2>
+<div id="timeline-edit">
     <form action="/timeline/{{timeline._id}}" method="POST">
         <h3>Edit your timeline</h3>
         <div>
             <label for="title">Title</label>
             <input id="title" value="{{timeline.title}}" type="text" name="title" placeholder="Bootcamp web dev">
-
         </div>
 
         {{!-- <div>
@@ -17,7 +14,8 @@ Edit: {{id}}
                 <option value="private">Private</option>
             </select>
         </div> --}}
-{{!-- 
+
+        {{!-- 
         <div>
             <label for="template">Change the template</label>
             <select id="template" name="template">
@@ -29,29 +27,57 @@ Edit: {{id}}
 
         <div>
             <label for="description">Description</label>
-            <textarea id="description"name="description" >{{timeline.description}}</textarea>
-
+            <textarea id="description" name="description">{{timeline.description}}</textarea>
         </div>
-
-
-
         <button type="text">Save</button>
-        
     </form>
-
-    <form action="/timeline" method ="GET" >
-<button type="text">See the timeline</button>
-</form>
-
-<form action ="/timeline/{{timeline._id}}/delete" method="POST">
-<button type="text">Delete the timeline</button>
-</form>
-
+    {{!-- View Button --}}
+    <form action="/timeline" method="GET">
+        <button type="text">See the timeline</button>
+    </form>
+    {{!-- Delete Button --}}
+    <form action="/timeline/{{timeline._id}}/delete" method="POST">
+        <button type="text">Delete the timeline</button>
+    </form>
 </div>
-
-
-<div>
-    
+<h3>New Event</h3>
+<div id="new-event">
+    <form action="/event" method="POST">
+        <div>
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title" placeholder="title">
+        </div>
+        <div>
+            <label for="image">Image</label>
+            <input type="text" name="image" id="image" placeholder="image url">
+        </div>
+        <div>
+            <label for="content">Content</label>
+            <textarea name="content" id="content"></textarea>
+        </div>
+        <div>
+            <label for="time_start">Time Start</label>
+            <input type="datetime-local" name="time_start" id="time_start">
+        </div>
+        <div>
+            <label for="time_end">End Time</label>
+            <input type="datetime-local" name="time_end" id="time_end">
+        </div>
+        <input type="hidden" name="timeline" value="{{timeline._id}}">
+        <p>Create</p>
+    </form>
 </div>
-
-
+<h3>Event List</h3>
+<div id="event-list">
+    {{#each events}}
+    <div class="event-card">
+        <p>{{this.title}}</p>
+        <p>{{this.image}}</p>
+        <p>{{this.content}}</p>
+        <p>{{this.time_start}}</p>
+        <p>{{this.time_end}}</p>
+        <span class="edit">Edit</span>
+        <span class="delete">Delete</span>
+    </div>
+    {{/each}}
+</div>

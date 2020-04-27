@@ -1,10 +1,13 @@
 const express = require(`express`);
 const router = express.Router();
+const Event = require("../models/event");
 
 // Create
 
 router.post(`/`, (req, res, next) => {
-  console.log(`Post: /event`);
+  Event.create(req.body).then((dbRes) => {
+    res.status(201).json(dbRes);
+  });
 });
 
 // Show
