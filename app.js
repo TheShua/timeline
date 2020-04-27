@@ -5,11 +5,23 @@ const hbs = require("hbs");
 const path = require("path");
 const flash = require("connect-flash");
 const cookieParser = require("cookie-parser");
+const sassMiddleware = require("node-sass-middleware");
 
 const app = express();
 
 app.set("view engine", "hbs");
-app.use(express.static("public"));
+
+app.use(
+  sassMiddleware({
+    src: path.join(__dirname, "public"),
+    dest: path.join(__dirname, "public"),
+    sourceMap: true,
+    debug: true,
+    indentedSyntax: false,
+  })
+);
+
+app.use(express.static(path.join(__dirname, "public")));
 hbs.registerPartials(path.join(__dirname, "views", "partials"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
