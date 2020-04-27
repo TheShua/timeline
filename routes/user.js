@@ -119,23 +119,25 @@ router.get(`/:id`, (req, res, next) => {
 	console.log(`/user/${req.params.id}`);
 });
 
-// Edit
+//using ajax 
 
-router.get(`/:id/edit`, (req, res, next) => {
-	res.render(`user/edit`, { id: req.params.id });
-	console.log(`/user/${req.params.id}/edit`);
-});
+// // Edit
 
-// Update
+// router.get(`/:id/edit`, (req, res, next) => {
+// 	res.render(`user/edit`, { id: req.params.id });
+// 	console.log(`/user/${req.params.id}/edit`);
+// });
 
-router.post(`/:id`, (req, res, next) => {
-	console.log(`Post: /user/${req.params.id}`);
-});
+// // Update
 
-// Destroy
+// router.post(`/:id`, (req, res, next) => {
+// 	console.log(`Post: /user/${req.params.id}`);
+// });
 
-router.delete(`/:id`, (req, res, next) => {
-	console.log(`Delete: /user/${req.params.id}`);
-});
+// // Destroy
+
+// router.delete(`/:id`, (req, res, next) => {
+// 	console.log(`Delete: /user/${req.params.id}`);
+// });
 
 module.exports = router;
