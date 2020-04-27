@@ -7,21 +7,21 @@ const bcryptSalt = 10;
 // Index
 
 router.get(`/`, (req, res, next) => {
+	// console.log(`/user/index`);
 	res.render(`user/index`);
-	console.log(`/user/index`);
 });
 
 // New
 
 router.get(`/signup`, (req, res, next) => {
+	// console.log(`/user/new`);
 	res.render(`user/new`);
-	console.log(`/user/new`);
 });
 
 // Create
 
 router.post(`/signup`, (req, res, next) => {
-	console.log(`Post: /user`);
+	// console.log(`Post: /user`);
 	const { name, email, password } = req.body;
 	const passwordConfirm = req.body.password_confirm;
 
@@ -40,14 +40,16 @@ router.post(`/signup`, (req, res, next) => {
 		});
 		return;
 	}
-	console.log("for now it's ok");
+
+	// Checking if a user already exist with this email
 	User.findOne({ email })
-		.then((dbResult) => {
-			if (dbResult) {
+		.then((user) => {
+			if (user) {
 				res.render(`user/new`, {
 					errorMessage: `Your email is already used ! If you already have an account, please <a href="/login">log in</a> !`,
 				});
 			} else {
+				// Hashing the password
 				const salt = bcrypt.genSaltSync(bcryptSalt);
 				const hashPass = bcrypt.hashSync(password, salt);
 				User.create({ name, email, hashPass })
@@ -61,6 +63,51 @@ router.post(`/signup`, (req, res, next) => {
 		.catch((dbError) => {
 			console.log(dbError);
 		});
+});
+
+/**
+ * GETTING ON LOGIN PAGE
+ */
+router.get(`/login`, (req, res, next) => {
+	res.render(`user/login`);
+});
+
+/**
+ * CHECKING LOGIN DATAS FOR AUTHENTIFICATION
+ */
+router.post(`/login`, (req, res, next) => {
+	const { email, password } = req.body;
+
+	// Check if both fields are empty
+	if (email === '' || password === '') {
+		res.render(`user/login`, {
+			errorMessage: `Please make sure both fields are filled...`,
+		});
+		return;
+	}
+
+	// Check if we got this account on the database
+	User.findOne({ email })
+		.then((user) => {
+			// Checking if we got an existing user
+			if (!user) {
+				res.render(`user/login`, {
+					errorMessage: `Invalid credentials they said...`,
+				});
+				return;
+			}
+
+			// Checking if the passwords matchs
+			if (bcrypt.compareSync(password, user.password)) {
+				req.flash('success', `Welcome ${user.name} !`);
+				res.redirect('/timeline');
+			} else {
+				res.render(`user/login`, {
+					errorMessage: `Invalid credentials they said...`,
+				});
+			}
+		})
+		.catch((dbError) => next(dbError));
 });
 
 // Show
