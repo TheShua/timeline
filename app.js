@@ -5,6 +5,9 @@ const express = require('express');
 const hbs = require('hbs');
 const path = require('path');
 const flash = require('connect-flash');
+const mongoose = require('mongoose');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 const cookieParser = require('cookie-parser');
 const sassMiddleware = require('node-sass-middleware');
 
@@ -19,6 +22,19 @@ app.use(
 		sourceMap: true,
 		debug: true,
 		indentedSyntax: false,
+	})
+);
+
+app.use(
+	session({
+		secret: process.env.SESSION_SECRET,
+		cookie: { maxAge: 60000 * 60 * 24 }, // in millisec
+		store: new MongoStore({
+			mongooseConnection: mongoose.connection,
+			ttl: 24 * 60 * 60, // 1 day
+		}),
+		saveUninitialized: true,
+		resave: true,
 	})
 );
 

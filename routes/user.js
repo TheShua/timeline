@@ -2,6 +2,7 @@ const express = require(`express`);
 const router = express.Router();
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
+const bcryptSalt = 10;
 
 // Index
 
@@ -40,14 +41,21 @@ router.post(`/signup`, (req, res, next) => {
 		return;
 	}
 	console.log("for now it's ok");
-	User.find({ email: email })
+	User.findOne({ email })
 		.then((dbResult) => {
-			console.log('allo');
-			console.log(dbResult);
 			if (dbResult) {
-				console.log('There is one');
+				res.render(`user/new`, {
+					errorMessage: `Your email is already used ! If you already have an account, please <a href="/login">log in</a> !`,
+				});
 			} else {
-				console.log('There is not');
+				const salt = bcrypt.genSaltSync(bcryptSalt);
+				const hashPass = bcrypt.hashSync(password, salt);
+				User.create({ name, email, hashPass })
+					.then((dbResult) => {
+						req.flash('created', `Account created ! Welcome ${name}`);
+						res.redirect('/user/login');
+					})
+					.catch((dbError) => console.log(dbError));
 			}
 		})
 		.catch((dbError) => {
