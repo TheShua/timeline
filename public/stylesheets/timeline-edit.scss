@@ -1,47 +1,76 @@
-.event-card,
-#new-event > form,
-#timeline-edit {
-  border: 1px solid black;
+#wrapper {
+  // only for dev purposes
+  // grid-template-columns: 80vw 1fr;
 }
 
-.event-card,
-#new-event > form,
-#timeline-edit > form {
-  padding: 20px;
-  margin-bottom: 5px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  & > * {
-    margin-right: 10px;
+.left-panel {
+  a,
+  h2 {
+    color: white;
+    margin: 20px;
+  }
+  grid-area: left;
+  color: white;
+  label {
+    text-transform: uppercase;
+    font-size: 0.7em;
     margin-top: 10px;
   }
-  h4 {
-    min-width: calc(100% - 20px);
+  h3 {
     padding: 0;
-    margin-bottom: 0;
+    margin: 0;
   }
-  div {
-    display: flex;
-    flex-direction: column;
-    label {
-      text-transform: uppercase;
-      font-size: 0.7em;
-    }
-    input {
-      min-width: 100px;
-    }
-  }
-  button {
-    padding: 5px;
-    border: 1px solid black;
-    min-width: 100%;
+  h4 {
+    padding: 20px 0 0 0;
+    margin: 0;
   }
 }
 
-#timeline-edit {
+#event-list {
+  margin-top: 20px;
+  border: 1px solid white;
   padding: 20px;
-  form {
-    padding: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border: 1px solid white;
+  border-radius: 4px;
+  margin-top: 20px;
+  .buttons {
+    margin-top: 20px;
+    border: none;
+    border-radius: none;
+    display: flex;
+    justify-content: space-between;
+    button {
+      display: inline-block;
+      flex: 1;
+      padding: 5px;
+      font-family: unset;
+      border: none;
+      margin-right: 10px;
+    }
+    button:last-child {
+      margin-right: 0;
+    }
+    textarea {
+      min-width: 100%;
+    }
+  }
+  .time {
+    display: flex;
+    flex-direction: row;
+    // justify-content: space-between;
+    div {
+      flex-basis: 1px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      max-width: 60px;
+      margin-right: 10px;
+    }
   }
 }
