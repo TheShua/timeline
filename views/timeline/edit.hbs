@@ -1,3 +1,4 @@
+<a href="/timeline">« Timelines</a>
 <h2>{{timeline.title}}</h2>
 <div id="timeline-edit">
     <h3>Edit your timeline</h3>
@@ -32,7 +33,7 @@
         <button type="text">Save</button>
     </form>
     {{!-- View Button --}}
-    <form action="/timeline" method="GET">
+    <form action="/timeline/{{timeline._id}}" method="GET">
         <button type="text">See the timeline</button>
     </form>
     {{!-- Delete Button --}}
