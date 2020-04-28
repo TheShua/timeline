@@ -43,6 +43,9 @@ router.get(`/:id`, async (req, res, next) => {
       timeline: timeline,
       scripts: ["timelineView.js"],
       stylesheets: ["style-01.css"],
+      minDate = minDate,
+      maxDate = maxDate,
+      unit = unit
     });
   } catch (err) {
     console.log(err);
@@ -90,7 +93,6 @@ module.exports = router;
 
 function setDates(events) {
   events.forEach((event, index) => {
-    events[index].dog = "billy";
     event.time_start.date = new Date(
       event.time_start.year,
       event.time_start.month - 1,
@@ -100,9 +102,6 @@ function setDates(events) {
       null,
       null
     );
-    console.log("time-start");
-    console.log(event.dog);
-    console.log(event.time_start.date);
     if (event.time_end.year) {
       event.time_end.date = new Date(
         event.time_end.year,
