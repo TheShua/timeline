@@ -6,7 +6,9 @@ const Event = require("../models/event");
 // Index
 
 router.get(`/`, (req, res, next) => {
-  res.render(`timeline/index`);
+  Timeline.find({}).then((dbRes) => {
+    res.render(`timeline/index`, { timelines: dbRes });
+  });
 });
 
 // New
@@ -43,6 +45,7 @@ router.get(`/:id/edit`, async (req, res, next) => {
       events: events,
       timeline: timeline,
       scripts: ["timelineEdit.js"],
+      stylesheets: ["timeline-edit.css"],
     });
   } catch (err) {
     console.log(err);
