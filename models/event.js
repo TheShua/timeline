@@ -15,8 +15,20 @@ const eventSchema = new mongoose.Schema({
     ref: "Category",
   },
   content: String,
-  time_start: Date,
-  time_end: Date,
+  time_start: {
+    year: Number,
+    month: Number,
+    day: Number,
+    hour: Number,
+    minute: Number,
+  },
+  time_end: {
+    year: Number,
+    month: Number,
+    day: Number,
+    hour: Number,
+    minute: Number,
+  },
 });
 
 const Event = mongoose.model("Event", eventSchema);
