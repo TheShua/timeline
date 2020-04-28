@@ -1,6 +1,6 @@
 console.log("Howdy there");
 
-const newEventButton = document.querySelector("#new-event p");
+const newEventButton = document.querySelector("#new-event button");
 
 newEventButton.onclick = (e) => {
   e.preventDefault();

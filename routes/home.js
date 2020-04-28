@@ -5,4 +5,11 @@ router.get('/', (req, res, next) => {
 	res.send('Woohoo');
 });
 
+// Exemples of layouts
+router.get('/layout-01', (req, res, next) => {
+	res.render('user/login', {
+		layout: 'layout-try01',
+	});
+});
+
 module.exports = router;
