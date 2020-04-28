@@ -29,13 +29,15 @@ router.post(`/`, (req, res, next) => {
 
 router.get(`/:id`, async (req, res, next) => {
   try {
-    const events = await Event.find({ timeline: req.params.id });
+    let events = await Event.find({ timeline: req.params.id });
     const timeline = await Timeline.findById(req.params.id);
+    events = JSON.parse(JSON.stringify(events));
     setDates(events);
     const minDate = getMinDate(events);
     const maxDate = getMaxDate(events);
     const unit = setUnit(events, minDate, maxDate);
     setRows(events, unit, minDate);
+    console.log(events);
     res.render(`timeline/show`, {
       events: events,
       timeline: timeline,
@@ -87,7 +89,8 @@ module.exports = router;
 // Functions
 
 function setDates(events) {
-  events.map((event) => {
+  events.forEach((event, index) => {
+    events[index].dog = "billy";
     event.time_start.date = new Date(
       event.time_start.year,
       event.time_start.month - 1,
@@ -97,6 +100,9 @@ function setDates(events) {
       null,
       null
     );
+    console.log("time-start");
+    console.log(event.dog);
+    console.log(event.time_start.date);
     if (event.time_end.year) {
       event.time_end.date = new Date(
         event.time_end.year,
@@ -108,6 +114,7 @@ function setDates(events) {
         null
       );
     }
+    console.log(event);
   });
 }
 
@@ -135,17 +142,15 @@ function getMaxDate(events) {
 }
 
 function setRows(events, unit, minDate) {
-  events.map((event) => {
-    console.log(minDate);
+  events.forEach((event) => {
     let startRow = event.time_start.date - minDate;
     startRow = convertMilliseconds(startRow, unit);
-    event.startRow = startRow;
+    event.startRow = Math.floor(startRow) + 1;
     if (event.time_end.date) {
-      let endRow = event.time_end.date - event.time_end.date;
+      let endRow = event.time_end.date - event.time_start.date;
       endRow = convertMilliseconds(endRow, unit);
-      event.endRow = endRow;
+      event.endRow = Math.floor(startRow) + Math.floor(endRow);
     }
-    console.log(event.time_end.date);
   });
 }
 
@@ -167,7 +172,7 @@ function convertMilliseconds(milliseconds, unit) {
       milliseconds /= 12 * 30 * 24 * 60 * 60 * 1000;
       break;
     case "centuries":
-      milliseconds /= 100 * 12 * 30 * 24 * 60 * 60 * 1000;
+      milliseconds /= 100 * 365.25 * 24 * 60 * 60 * 1000;
       break;
   }
   return milliseconds;
@@ -185,7 +190,7 @@ function setUnit(events, minDate, maxDate) {
   if (spread > 1000 * 24 * 60 * 60 * 1000) {
     unit = "months";
   }
-  if (spread > 1000 * 12 * 24 * 60 * 60 * 1000) {
+  if (spread > 1000 * 30 * 24 * 60 * 60 * 1000) {
     unit = "years";
   }
   if (spread.getFullYear - 1970 > 1000) {
