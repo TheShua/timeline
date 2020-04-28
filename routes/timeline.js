@@ -43,9 +43,9 @@ router.get(`/:id`, async (req, res, next) => {
       timeline: timeline,
       scripts: ["timelineView.js"],
       stylesheets: ["style-01.css"],
-      minDate = minDate,
-      maxDate = maxDate,
-      unit = unit
+      minDate: minDate,
+      maxDate: maxDate,
+      unit: unit,
     });
   } catch (err) {
     console.log(err);
