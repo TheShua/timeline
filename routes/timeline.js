@@ -28,7 +28,22 @@ router.post(`/`, (req, res, next) => {
 // Show
 
 router.get(`/:id`, (req, res, next) => {
-  res.render(`timeline/show`, { id: req.params.id });
+  Event.find({ timeline: req.params.id }).then((res) => {
+    console.log(res);
+  });
+  try {
+    const events = await Event.find({ timeline: req.params.id });
+    const timeline = await Timeline.findById(req.params.id);
+    console.log(events);
+    res.render(`timeline/show`, {
+      events: events,
+      timeline: timeline,
+      scripts: ["timelineView.js"],
+      stylesheets: ["timeline-view.css"],
+    });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 // Edit
