@@ -60,7 +60,7 @@ function createFilledForm(data) {
   form.innerHTML = `
 <div>
   <label for="title">Title</label>
-  <input type="text" name="title" id="title" placeholder="title" value=${data.title}>
+  <input type="text" name="title" id="title" placeholder="title" value="${data.title}">
 </div>
 <div>
   <label for="image">Image</label>
@@ -68,7 +68,7 @@ function createFilledForm(data) {
 </div>
 <div>
   <label for="content">Content</label>
-  <textarea name="content" id="content">value=${data.content}</textarea>
+  <textarea name="content" id="content">${data.content}</textarea>
 </div>
 <h4>Time Start</h4>
 <div>
@@ -77,19 +77,19 @@ function createFilledForm(data) {
 </div>
 <div>
   <label for="time_start_month">Month</label>
-  <input type="number" name="time_start_month" id="time_start_month" min="1" max="12" value=${data.time_start.year}>
+  <input type="number" name="time_start_month" id="time_start_month" min="1" max="12" value=${data.time_start.month}>
 </div>
 <div>
   <label for="time_start_day">Day</label>
-  <input type="number" name="time_start_day" id="time_start_day" min="1" max="31" value=${data.time_start.year}>
+  <input type="number" name="time_start_day" id="time_start_day" min="1" max="31" value=${data.time_start.day}>
 </div>
 <div>
   <label for="time_start_hour">Hour (24)</label>
-  <input type="number" name="time_start_hour" id="time_start_hour" min="0" max="23" value=${data.time_start.year}>
+  <input type="number" name="time_start_hour" id="time_start_hour" min="0" max="23" value=${data.time_start.hour}>
 </div>
 <div>
   <label for="time_start_minute">Minute</label>
-  <input type="number" name="time_start_minute" id="time_start_minute" min="0" max="59" value=${data.time_start.year}>
+  <input type="number" name="time_start_minute" id="time_start_minute" min="0" max="59" value=${data.time_start.minute}>
 </div>
 <h4>Time End</h4>
 <div>
@@ -147,13 +147,19 @@ function addListenersToEventForm(form) {
     };
     axios.post(`/event/${id}`, eventBody).then((apiRes) => {
       editButton.style.background = "green";
+      setTimeout(function () {
+        editButton.style.background = null;
+      }, 200);
     });
   };
   deleteButton.onclick = (e) => {
     console.log("Delete delete");
     e.preventDefault();
     axios.delete(`/event/${id}`).then((apiRes) => {
-      form.remove();
+      form.style.border = "5px solid red";
+      setTimeout(function () {
+        form.remove();
+      }, 200);
     });
   };
 }
