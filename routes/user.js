@@ -117,7 +117,17 @@ router.post(`/login`, (req, res, next) => {
 // Show
 
 router.get(`/show`, (req, res, next) => {
+<<<<<<< HEAD
 	res.render(`user/show`, { user: req.session.currentUser, scripts: ['userEdit.js'] });
+=======
+	
+	res.render(`user/show`, {
+		user: req.session.currentUser,
+		scripts: ["userEdit.js"],
+		stylesheets: ["user-profile.css"]
+	});
+	
+>>>>>>> fcb41620b8b5ce45acb19a78d414682502e76350
 });
 
 //using ajax

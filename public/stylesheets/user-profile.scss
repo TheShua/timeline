@@ -1,0 +1,111 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    background-color: #252359;
+}
+
+#header-one {
+    margin: 0 auto;
+    margin-top: 35vh;
+    display: inline-block;
+    font-size: 48px;
+    line-height: 1;
+    color: white;
+    .fa-camera-retro {
+        
+        width: 100px;
+        height: 100px;
+        padding: 20px;
+        border: 2px solid #fff;
+        cursor: pointer;
+        border-radius: 50%;
+        transition:(background-color .3s ease);
+        &:hover {
+            background-color: rgba(255, 255, 255, .2);
+        }
+}
+}
+
+#container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+.btn-profile {
+    font-family: 'Lato', sans-serif;
+    border: none;
+    width: 100%;
+    display: block;
+    padding: 15px;
+    background-color: #fff;
+    font-size: 18px;
+    color: #D9145C;
+    cursor: pointer;
+    margin-bottom: 10px;
+
+    &:hover,
+    &:focus {
+        color: #333;
+        outline: none;
+    }
+}
+
+
+// main style
+
+.label-profile {
+    position: relative;
+    margin-bottom: 10px;
+
+    label,
+    input,
+    textarea {
+        font-family: 'Lato', sans-serif;
+        font-size: 24px;
+        font-weight: 300;
+    }
+
+    input, input[type="email"], input[type="password"],
+    textarea,
+    input:-internal-autofill-selected {
+        
+        outline: none;
+        border: none;
+        width: 100%;
+        display: block;
+        cursor: pointer;
+
+
+        //Main style
+        font-family: 'Lato', sans-serif;
+        font-size: 24px;
+        border-bottom: 1px solid rgba(255, 255, 255, .7);
+        background: none !important;
+        color: #fff;
+        padding: 15px 20px 10px 10px;
+    }
+
+    label {
+        position: absolute;
+        left: 10px;
+        top: 18px;
+        color: #fff;
+        pointer-events: none;
+
+    }
+
+    textarea {
+        height: 100px;
+        resize: none;
+    }
+
+    
+}
+
+ 
