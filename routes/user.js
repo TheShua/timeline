@@ -116,7 +116,11 @@ router.post(`/login`, (req, res, next) => {
 
 router.get(`/show`, (req, res, next) => {
 	
-	res.render(`user/show`, { user: req.session.currentUser, scripts: ["userEdit.js"] });
+	res.render(`user/show`, {
+		user: req.session.currentUser,
+		scripts: ["userEdit.js"],
+		stylesheets: ["user-profile.css"]
+	});
 	
 });
 

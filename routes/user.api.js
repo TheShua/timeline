@@ -11,15 +11,23 @@ const bcryptSalt = 10;
 //need to hash password again and check if email exist
 
 router.patch("/:id", (req, res) => {
-    
- User.findByIdAndUpdate(req.params.id, req.body, {
+    const salt = bcrypt.genSaltSync(bcryptSalt);
+    const password = req.body.password;
+    const hashPass = bcrypt.hashSync(password, salt);
+
+    const updatedUser = {name: req.body.name, email: req.body.email, password: hashPass}; 
+    console.log(updatedUser)
+ User.findByIdAndUpdate(req.params.id, updatedUser, {
                     new: true
                 })
                 .then((dbResult) => {
-                    console.Log(dbResult);
+                    
+                    res.status(200).json(dbResult)
+                   
                 })
                 .catch((dbErr) => {
-                    console.log(dbErr);
+                    res.status(500).json(dbErr)
+                    
                 });
 
             }); 
