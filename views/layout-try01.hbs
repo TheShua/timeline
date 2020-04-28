@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline</title>
+
+    <link rel="stylesheet" href="/stylesheets/style-01.css">
+    {{#each stylesheets}}
+    <link rel="stylesheet" href="/stylesheets/{{this}}">
+    {{/each}}
+
+    {{#each scripts}}
+    <script src="/scripts/{{this}}" type="module"></script>
+    {{/each}}
+</head>
+
+<body>
+    <div id="wrapper">
+        <nav>
+            <h1>Timeline<span>Creator</span></h1>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/">Sign Up</a></li>
+                <li><a href="/">Login</a></li>
+            </ul>
+        </nav>
+        <aside>
+            <h2>Edit The Line</h2>
+            <div class="element">
+                <input type="text" value="Input type text">
+            </div>
+            <div class="element">
+                <input type="text" placeholder="With a placeholder">
+            </div>
+            <div class="element">
+                <label for="text-3" class="inline">With label</label><input id="text-3" type="text">
+            </div>
+            <div class="element">
+                <select name="" id="">
+                    <option value="">Test Uno</option>
+                    <option value="">Test Dos</option>
+                    <option value="">Test Tres</option>
+                </select>
+            </div>
+            <div class="flex">
+                <div class="half">
+                    <div class="element">
+                        <input type="checkbox" name="" id="testCheck"><label for="testCheck">Checkbox</label>
+                    </div>
+                    <div class="element">
+                        <input type="checkbox" name="" id="testCheck2" checked><label for="testCheck2">Checkbox</label>
+                    </div>
+                    <div class="element">
+                        <input type="checkbox" name="" id="testCheck3"><label for="testCheck3">Checkbox</label>
+                    </div>
+                </div>
+                <div class="half">
+                    <div class="element">
+                        <p><input type="radio" name="zbu" id="testRadio01"><label for="testRadio01">Radio</label></p>
+                        <p><input type="radio" name="zbu" id="testRadio02"><label for="testRadio02">Radio</label></p>
+                        <p><input type="radio" name="zbu" id="testRadio03"><label for="testRadio03">Radio</label></p>
+                    </div>
+                </div>
+            </div>
+            <button>Button</button>
+        </aside>
+        <section>
+            <h2>Preview</h2>
+            <div class="containt">
+                <div class="bar yellow"></div>
+                <div class="bar red"></div>
+                <div class="bar green"></div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
