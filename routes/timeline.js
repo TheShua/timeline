@@ -45,6 +45,7 @@ router.get(`/:id/edit`, async (req, res, next) => {
       events: events,
       timeline: timeline,
       scripts: ["timelineEdit.js"],
+      stylesheets: ["timeline-edit.css"],
     });
   } catch (err) {
     console.log(err);
