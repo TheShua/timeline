@@ -45,12 +45,13 @@ app.use(express.json());
 app.use(flash());
 app.use(cookieParser());
 
-app.use((req, res, next) => {
-	if (req.session.currentUser) {
-		console.log('woohoo logged !');
-	}
+function checkLoginStatus(req, res, next) {
+	res.locals.user = req.session.currentUser ? req.session.currentUser : null;
+	res.locals.isLoggedIn = Boolean(req.session.currentUser);
 	next();
-});
+}
+
+app.use(checkLoginStatus);
 
 app.use('/', require('./routes/home'));
 app.use('/timeline', require('./routes/timeline'));

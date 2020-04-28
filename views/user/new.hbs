@@ -1,23 +1,24 @@
-Form for a new user:
+<div class="miniwrap">
+    <form action="/user/signup" method="post" class="main-content">
+        <h2>Sign up</h2>
+        {{#if errorMessage}}<p class="error">{{{errorMessage}}}</p>{{/if}}
 
-{{#if errorMessage}}<p class="error">{{{errorMessage}}}</p>{{/if}}
-
-<form action="/user/signup" method="post">
-    <div class="element">
-        <label for="name">Name</label>
-        <input type="text" name="name" id="name" placeholder="John Doe" value="{{name}}">
-    </div>
-    <div class="element">
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" placeholder="woohoo@domain.com" value="{{email}}">
-    </div>
-    <div class="element">
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password">
-    </div>
-    <div class="element">
-        <label for="password_confirm">Confirm password</label>
-        <input type="password" name="password_confirm" id="password_confirm">
-    </div>
-    <button>Sign me Up ! Before you go-go ~</button>
-</form>
+        <div class="element">
+            <label for="name" class="inline">Name</label>
+            <input type="text" name="name" id="name" placeholder="John Doe" value="{{name}}">
+        </div>
+        <div class="element">
+            <label for="email" class="inline">Email</label>
+            <input type="email" name="email" id="email" placeholder="woohoo@domain.com" value="{{email}}">
+        </div>
+        <div class="element">
+            <label for="password" class="inline">Password</label>
+            <input type="password" name="password" id="password">
+        </div>
+        <div class="element">
+            <label for="password_confirm" class="inline">Confirm</label>
+            <input type="password" name="password_confirm" id="password_confirm">
+        </div>
+        <button>Sign me Up !</button>
+    </form>
+</div>

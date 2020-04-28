@@ -15,7 +15,9 @@ router.get(`/`, (req, res, next) => {
 
 router.get(`/signup`, (req, res, next) => {
 	// console.log(`/user/new`);
-	res.render(`user/new`);
+	res.render(`user/new`, {
+		stylesheets: ['form.css'],
+	});
 });
 
 // Create
@@ -115,12 +117,10 @@ router.post(`/login`, (req, res, next) => {
 // Show
 
 router.get(`/show`, (req, res, next) => {
-	
-	res.render(`user/show`, { user: req.session.currentUser, scripts: ["userEdit.js"] });
-	
+	res.render(`user/show`, { user: req.session.currentUser, scripts: ['userEdit.js'] });
 });
 
-//using ajax 
+//using ajax
 
 // // Edit
 
@@ -139,13 +139,19 @@ router.get(`/show`, (req, res, next) => {
 
 router.post(`/:id/delete`, (req, res, next) => {
 	User.findByIdAndDelete(req.params.id)
-	
-	.then((dbRes)=>{
-		res.redirect(`/user/signup`)
-		
-	})
-	.catch((err)=>{console.log(err)
-	})
+
+		.then((dbRes) => {
+			res.redirect(`/user/signup`);
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+});
+
+router.get(`/logout`, (req, res, next) => {
+	req.session.destroy((err) => {
+		res.redirect('/');
+	});
 });
 
 module.exports = router;
