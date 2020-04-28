@@ -27,19 +27,17 @@ router.post(`/`, (req, res, next) => {
 
 // Show
 
-router.get(`/:id`, (req, res, next) => {
-  Event.find({ timeline: req.params.id }).then((res) => {
-    console.log(res);
-  });
+router.get(`/:id`, async (req, res, next) => {
   try {
     const events = await Event.find({ timeline: req.params.id });
     const timeline = await Timeline.findById(req.params.id);
-    console.log(events);
+    const unit = getSmallestUnit(events);
+    console.log(unit);
     res.render(`timeline/show`, {
       events: events,
       timeline: timeline,
       scripts: ["timelineView.js"],
-      stylesheets: ["timeline-view.css"],
+      stylesheets: ["style-01.css"],
     });
   } catch (err) {
     console.log(err);
@@ -49,9 +47,6 @@ router.get(`/:id`, (req, res, next) => {
 // Edit
 
 router.get(`/:id/edit`, async (req, res, next) => {
-  Event.find({ timeline: req.params.id }).then((res) => {
-    console.log(res);
-  });
   try {
     const events = await Event.find({ timeline: req.params.id });
     const timeline = await Timeline.findById(req.params.id);
@@ -84,3 +79,28 @@ router.post(`/:id/delete`, (req, res, next) => {
 });
 
 module.exports = router;
+
+// Functions
+
+function getSmallestUnit(events) {
+  let unit = "years";
+  events.forEach(function (event) {
+    console.log(event);
+    if (unit === "years" && (event.time_start.month || event.time_end.month)) {
+      unit = "months";
+    }
+    if (unit === "months" && (event.time_start.day || event.time_end.day)) {
+      unit = "days";
+    }
+    if (unit === "days" && (event.time_start.hour || event.time_end.hour)) {
+      unit = "hours";
+    }
+    if (
+      unit === "hours" &&
+      (event.time_start.minutes || event.time_end.minutes)
+    ) {
+      unit = "minutes";
+    }
+  });
+  return unit;
+}
