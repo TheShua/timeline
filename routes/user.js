@@ -114,9 +114,10 @@ router.post(`/login`, (req, res, next) => {
 
 // Show
 
-router.get(`/:id`, (req, res, next) => {
-	res.render(`user/show`, { id: req.params.id });
-	console.log(`/user/${req.params.id}`);
+router.get(`/show`, (req, res, next) => {
+	
+	res.render(`user/show`, { user: req.session.currentUser, scripts: ["userEdit.js"] });
+	
 });
 
 //using ajax 
@@ -134,10 +135,17 @@ router.get(`/:id`, (req, res, next) => {
 // 	console.log(`Post: /user/${req.params.id}`);
 // });
 
-// // Destroy
+// Destroy
 
-// router.delete(`/:id`, (req, res, next) => {
-// 	console.log(`Delete: /user/${req.params.id}`);
-// });
+router.post(`/:id/delete`, (req, res, next) => {
+	User.findByIdAndDelete(req.params.id)
+	
+	.then((dbRes)=>{
+		res.redirect(`/user/signup`)
+		
+	})
+	.catch((err)=>{console.log(err)
+	})
+});
 
 module.exports = router;

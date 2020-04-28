@@ -1,34 +1,39 @@
-One user. Id: {{id}}
+One user. Id: {{user._id}}
 
-<form id="form-profile" action="" method="POST" enctype="multipart/form-data">
+
+<form  data-userId="{{user._id}}" id="form-profile" action="/user/show" method="POST" enctype="multipart/form-data">
 
     <h1 id="header-one">
-        User Profile
-        {{!--  {{user.name}} --}}
+        Your Profile
+         {{user.name}}
     </h1>
 
     <div class="label-profile">
         <label for="name"></label>
-        <input type="text" name="name" value="{{user.name}}" />
+        <input  id="input-name" type="text" name="name" value="{{user.name}}" />
 
     </div>
 
     <div class="label-profile">
         <label for="email"></label>
-        <input type="email" name="email" value="{{user.email}}" />
+        <input  id="input-email" type="email" name="email" value="{{user.email}}" />
     </div>
 
 
     <div class="label-profile">
         <label for="password" placeholder="Password"></label>
-        <input type="password" name="password" value="{{user.password}}" />
+        <input id="input-password" type="password" name="password" value="{{user.password}}" />
     </div>
 
     <div class="label-profile">
-        <textarea name="notes" id="" placeholder="Note"></textarea>
+        <textarea name="notes" id="text-note" placeholder="Note"></textarea>
         <label for="notes"></label>
     </div>
 
-    <button class="btn-profile"  type="reset" value="save">Save</button>
-    <button class="btn-profile" id="clear" value="delete">Delete my profile</button>
+    <button data-userId="{{user._id}}" id="btn-edit" class="btn-profile" >Edit</button>
+
+</form>
+{{!-- Delete account --}}
+<form action="/user/{{user._id}}/delete" method="POST">
+    <button type="text">Delete my account</button>
 </form>
