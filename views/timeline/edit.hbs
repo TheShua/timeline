@@ -1,7 +1,7 @@
 <h2>{{timeline.title}}</h2>
 <div id="timeline-edit">
+    <h3>Edit your timeline</h3>
     <form action="/timeline/{{timeline._id}}" method="POST">
-        <h3>Edit your timeline</h3>
         <div>
             <label for="title">Title</label>
             <input id="title" value="{{timeline.title}}" type="text" name="title" placeholder="Bootcamp web dev">
@@ -40,8 +40,8 @@
         <button type="text">Delete the timeline</button>
     </form>
 </div>
-<h3>New Event</h3>
 <div id="new-event">
+    <h3>New Event</h3>
     <form>
         <div>
             <label for="title">Title</label>
@@ -55,13 +55,47 @@
             <label for="content">Content</label>
             <textarea name="content" id="content"></textarea>
         </div>
+        <h4>Time Start</h4>
         <div>
-            <label for="time_start">Time Start</label>
-            <input type="datetime-local" name="time_start" id="time_start">
+            <label for="time_start_year">Year</label>
+            <input type="number" name="time_start_year" id="time_start_year">
         </div>
         <div>
-            <label for="time_end">End Time</label>
-            <input type="datetime-local" name="time_end" id="time_end">
+            <label for="time_start_month">Month</label>
+            <input type="number" name="time_start_month" id="time_start_month" min="1" max="12">
+        </div>
+        <div>
+            <label for="time_start_day">Day</label>
+            <input type="number" name="time_start_day" id="time_start_day" min="1" max="31">
+        </div>
+        <div>
+            <label for="time_start_hour">Hour (24)</label>
+            <input type="number" name="time_start_hour" id="time_start_hour" min="0" max="23">
+        </div>
+        <div>
+            <label for="time_start_minute">Minute</label>
+            <input type="number" name="time_start_minute" id="time_start_minute" min="0" max="59">
+        </div>
+        <h4>Time End</h4>
+        <div>
+            <label for="time_end_year">Year</label>
+            <input type="number" name="time_end_year" id="time_end_year">
+        </div>
+        <div>
+            <label for="time_end_month">Month</label>
+            <input type="number" name="time_end_month" id="time_end_month" min="1" max="12">
+        </div>
+        <div>
+            <label for="time_end_day">Day</label>
+            <input type="number" name="time_end_day" id="time_end_day" min="1" max="31">
+        </div>
+        <div>
+            <label for="time_end_hour">Hour (24)</label>
+            <input type="number" name="time_end_hour" id="time_end_hour" min="0" max="23">
+        </div>
+        <div>
+            <label for="time_end_minute">Minute</label>
+            <input type="number" name="time_end_minute" id="time_end_minute" min="0" max="59">
         </div>
         <input type="hidden" name="timeline" value="{{timeline._id}}">
         <button>Create</button>
@@ -83,17 +117,57 @@
             <label for="content">Content</label>
             <textarea name="content" id="content">{{this.content}}</textarea>
         </div>
+        <h4>Time Start</h4>
         <div>
-            <label for="time_start">Time Start</label>
-            <input type="datetime-local" name="time_start" id="time_start" value="{{this.time_start}}">
+            <label for="time_start_year">Year</label>
+            <input type="number" name="time_start_year" id="time_start_year" value="{{this.time_start.year}}">
         </div>
         <div>
-            <label for="time_end">End Time</label>
-            <input type="datetime-local" name="time_end" id="time_end" value="{{this.time_end}}">
+            <label for="time_start_month">Month</label>
+            <input type="number" name="time_start_month" id="time_start_month" min="1" max="12"
+                value="{{this.time_start.month}}">
         </div>
-        <input type="hidden" name="timeline" value="{{timeline._id}}">
-        <button class="edit">Edit</button>
-        <button class="delete">Delete</button>
+        <div>
+            <label for="time_start_day">Day</label>
+            <input type="number" name="time_start_day" id="time_start_day" min="1" max="31"
+                value="{{this.time_start.day}}">
+        </div>
+        <div>
+            <label for="time_start_hour">Hour (24)</label>
+            <input type="number" name="time_start_hour" id="time_start_hour" min="0" max="23"
+                value="{{this.time_start.hour}}">
+        </div>
+        <div>
+            <label for="time_start_minute">Minute</label>
+            <input type="number" name="time_start_minute" id="time_start_minute" min="0" max="59"
+                value="{{this.time_start.minute}}">
+        </div>
+        <h4>Time End</h4>
+        <div>
+            <label for="time_end_year">Year</label>
+            <input type="number" name="time_end_year" id="time_end_year" value="{{this.time_end.year}}">
+        </div>
+        <div>
+            <label for="time_end_month">Month</label>
+            <input type="number" name="time_end_month" id="time_end_month" min="1" max="12"
+                value="{{this.time_end.month}}">
+        </div>
+        <div>
+            <label for="time_end_day">Day</label>
+            <input type="number" name="time_end_day" id="time_end_day" min="1" max="31" value="{{this.time_end.day}}">
+        </div>
+        <div>
+            <label for="time_end_hour">Hour (24)</label>
+            <input type="number" name="time_end_hour" id="time_end_hour" min="0" max="23"
+                value="{{this.time_end.hour}}">
+        </div>
+        <div>
+            <label for="time_end_minute">Minute</label>
+            <input type="number" name="time_end_minute" id="time_end_minute" min="0" max="59"
+                value="{{this.time_end.minute}}">
+        </div>
+        <button class="edit" data-id={{this._id}}>Save</button>
+        <button class="delete" data-id={{this._id}}>Delete</button>
     </form>
     {{/each}}
 </div>

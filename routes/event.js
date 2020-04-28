@@ -20,13 +20,20 @@ router.get(`/:id`, (req, res, next) => {
 // Update
 
 router.post(`/:id`, (req, res, next) => {
-  console.log(`Post: /event/${req.params.id}`);
+  Event.findByIdAndUpdate(req.params.id, req.body, { new: true }).then(
+    (dbRes) => {
+      res.status(201).json(dbRes);
+    }
+  );
 });
 
 // Destroy
 
 router.delete(`/:id`, (req, res, next) => {
-  console.log(`Delete: /event/${req.params.id}`);
+  Event.findByIdAndDelete(req.params.id).then((dbRes) => {
+    res.status(201).json(dbRes);
+  });
+  // console.log(`Delete: /event/${req.params.id}`);
 });
 
 /*
