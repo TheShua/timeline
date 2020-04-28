@@ -15,6 +15,19 @@ body {
     font-size: 48px;
     line-height: 1;
     color: white;
+    .fa-camera-retro {
+        
+        width: 100px;
+        height: 100px;
+        padding: 20px;
+        border: 2px solid #fff;
+        cursor: pointer;
+        border-radius: 50%;
+        transition:(background-color .3s ease);
+        &:hover {
+            background-color: rgba(255, 255, 255, .2);
+        }
+}
 }
 
 #container {
@@ -92,5 +105,7 @@ body {
         resize: none;
     }
 
-
+    
 }
+
+ 
