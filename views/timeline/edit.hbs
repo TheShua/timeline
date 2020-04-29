@@ -7,6 +7,14 @@
             <input type="hidden" name="id" value="{{timeline.id}}">
             <label for="title">Title</label>
             <input id="title" value="{{timeline.title}}" type="text" name="title" placeholder="Bootcamp web dev">
+            <label for="image">Image</label>
+            <input type="text" name="image" id="image" value="{{this.image}}">
+            <label for="scope">Scope</label>
+            <select id="scope" name="scope">
+                <option {{#compare timeline.scope "public"}}selected{{/compare}} value="public">Public</option>
+                <option {{#compare timeline.scope "private"}}selected{{/compare}} value="private">Private</option>
+            </select>
+            <p>Collaborators</p>
             <label for="description">Description</label>
             <textarea id="description" name="description">{{timeline.description}}</textarea>
             <div class="buttons">
@@ -20,7 +28,7 @@
             </div>
         </form>
     </div>
-    <div id="new-event">
+    <div id="new-event" class="{{#compare timeline.template "vertical_flat"}}flat{{/compare}}">
         <form>
             <h3>New Event</h3>
             <label for="title">Title</label>
@@ -41,7 +49,7 @@
                 <label class="color-choice green" for="green"></label>
             </div>
             <input type="checkbox" id="span-or-point">
-            <label for="span-or-point" class="margin-top">
+            <label for="span-or-point" class="margin-top span-option">
                 <p class="edit">Timespan</p>
             </label>
             <h4 class="isnt-span">Time</h4>

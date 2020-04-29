@@ -85,6 +85,7 @@ function setTimelineSaveButton() {
     const form = saveButton.closest("form");
     const timeline = {};
     timeline.title = form.title.value;
+    timeline.scope = form.scope.value;
     timeline.description = form.description.value;
     axios.post(`/timeline/${form.id.value}`, timeline).then((apiRes) => {
       document.querySelector("h2").innerText = timeline.title;
