@@ -19,6 +19,12 @@ $bar-blue: blue;
   background: $bar-green;
 }
 
+input,
+textarea,
+select {
+  max-width: 100%;
+}
+
 .color-picker {
   display: flex;
   align-items: center;
@@ -97,7 +103,7 @@ button:hover {
   label {
     text-transform: uppercase;
     font-size: 0.7em;
-    margin-top: 10px;
+    // margin-top: 10px;
   }
   h3 {
     padding: 0;
@@ -145,6 +151,10 @@ button:hover {
 }
 
 // Neve Event Timespan Toggle
+
+#new-event.flat #span-or-point + label.span-option {
+  display: none;
+}
 
 #new-event {
   .margin-top {
