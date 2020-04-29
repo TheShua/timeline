@@ -2,15 +2,20 @@
     <a href="/timeline">« Timelines</a>
     <h2>{{timeline.title}}</h2>
     <div id="timeline-edit">
-        <form action="/timeline/{{timeline._id}}" method="POST">
+        <form>
             <h3>Edit Timeline</h3>
+            <input type="hidden" name="id" value="{{timeline.id}}">
             <label for="title">Title</label>
             <input id="title" value="{{timeline.title}}" type="text" name="title" placeholder="Bootcamp web dev">
             <label for="description">Description</label>
             <textarea id="description" name="description">{{timeline.description}}</textarea>
             <div class="buttons">
                 <button class="save" type="text">Save</button>
-                <button class="view" type="text">View</button>
+                <button class="view" type="text">
+                    <a href="/timeline/{{timeline.id}}">
+                        View
+                    </a>
+                </button>
                 <button class="delete" type="text">Delete</button>
             </div>
         </form>
@@ -24,8 +29,19 @@
             <input type="text" name="image" id="image" placeholder="image url">
             <label for="content">Content</label>
             <textarea name="content" id="content"></textarea>
+            <div class="margin-top color-picker">
+                <label>Color</label>
+                <input type="radio" id="red" name="color" value="red">
+                <label class="color-choice red" for="red"></label>
+                <input type="radio" id="blue" name="color" value="blue">
+                <label class="color-choice blue" for="blue"></label>
+                <input type="radio" id="yellow" name="color" value="yellow">
+                <label class="color-choice yellow" for="yellow"></label>
+                <input type="radio" id="green" name="color" value="green">
+                <label class="color-choice green" for="green"></label>
+            </div>
             <input type="checkbox" id="span-or-point">
-            <label for="span-or-point">
+            <label for="span-or-point" class="margin-top">
                 <p class="edit">Timespan</p>
             </label>
             <h4 class="isnt-span">Time</h4>
@@ -85,8 +101,8 @@
         <h3>All Events</h3>
         {{#each events}}
         <form class="event-card">
-            {{this.title}}
-            <input type="checkbox" id="title-toggle-{{this.id}}">
+            <h4>{{this.title}}</h4>
+            <input class="event-toggle-checkbox" type="checkbox" id="title-toggle-{{this.id}}">
             <label for="title-toggle-{{this.id}}">
                 <p class="edit">Edit</p>
                 <p class="close">Close</p>

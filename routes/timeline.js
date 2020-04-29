@@ -97,6 +97,7 @@ router.post(`/:id`, (req, res, next) => {
 // Destroy
 
 router.post(`/:id/delete`, (req, res, next) => {
+  console.log("delete");
   Timeline.findByIdAndDelete(req.params.id).then((dbRes) => {
     res.redirect(`/timeline`);
   });
