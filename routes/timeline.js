@@ -5,11 +5,25 @@ const Event = require("../models/event");
 
 // Index
 
-router.get(`/`, (req, res, next) => {
-  Timeline.find({}).then((dbRes) => {
-    res.render(`timeline/index`, { timelines: dbRes, stylesheets: ["dashboard.css"] });
+router.get(`/`, async (req, res, next) => {
+  const yourTimelines = await Timeline.find({
+    author: req.session.currentUser._id,
   });
-});
+  console.log(yourTimelines);
+  let othersTimelines;
+  if (req.session.currentUser.role === "user") {
+    othersTimelines = await Timeline.find({
+      author: { $ne: req.session.currentUser._id },
+    });
+  }
+  
+    res.render(`timeline/index`, {
+      yourTimelines: yourTimelines,
+      othersTimelines: othersTimelines,
+      stylesheets: ["dashboard.css"]
+    });
+  });
+
 
 // New
 
@@ -20,7 +34,9 @@ router.get(`/new`, (req, res, next) => {
 // Create
 
 router.post(`/`, (req, res, next) => {
-  Timeline.create(req.body).then((dbResult) => {
+  timeline = JSON.parse(JSON.stringify(req.body));
+  timeline.author = req.session.currentUser;
+  Timeline.create(timeline).then((dbResult) => {
     res.redirect(`/timeline/${dbResult._id}/edit`);
   });
 });
@@ -37,7 +53,6 @@ router.get(`/:id`, async (req, res, next) => {
     const maxDate = getMaxDate(events);
     const unit = setUnit(events, minDate, maxDate);
     setRows(events, unit, minDate);
-    console.log(events);
     res.render(`timeline/show`, {
       events: events,
       timeline: timeline,
@@ -113,7 +128,6 @@ function setDates(events) {
         null
       );
     }
-    console.log(event);
   });
 }
 
