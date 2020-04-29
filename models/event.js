@@ -10,6 +10,7 @@ const eventSchema = new mongoose.Schema({
   },
   title: String,
   image: String,
+  color: String,
   category: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Category",
