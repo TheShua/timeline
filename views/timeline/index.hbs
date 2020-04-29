@@ -1,29 +1,28 @@
-
 <div id="container">
-  <a href="/timeline/new">
-<article>
-
-  {{!-- add one to create one --}}
-</article>
-</a>
-{{#each yourTimelines}}
-<article>
-   <input type="hidden" value="{{this._id}}">
+  <a href="/timeline/new" class="big-new">
+    <article>
+      <span class="add"></span>
+      {{!-- add one to create one --}}
+    </article>
+  </a>
+  {{#each yourTimelines}}
+  <article>
+    <input type="hidden" value="{{this._id}}">
     <span class="favorite">{{#if this.favorite}}
       <i class="fas fa-star"></i>
       {{else}}
       <i class="far fa-star"></i>
       {{/if}}
-      </span>
+    </span>
     <span class="delete"><i class="fas fa-times"></i></span>
     <h3>{{this.title}}</h3>
     <div>
-    <a href="/timeline/{{this._id}}"><i class="fas fa-eye"></i></a>
-  
-  <a href="/timeline/{{this._id}}/edit"><i class="fas fa-pen"></i></a>
-  </div>
-</article>
+      <a href="/timeline/{{this._id}}"><i class="fas fa-eye"></i></a>
 
-{{/each}}
+      <a href="/timeline/{{this._id}}/edit"><i class="fas fa-pen"></i></a>
+    </div>
+  </article>
+
+  {{/each}}
 
 </div>
