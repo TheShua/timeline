@@ -1,10 +1,29 @@
-<a href="/">« Homepage</a>
 
+<div id="container">
+  <a href="/timeline/new">
+<article>
+
+  {{!-- add one to create one --}}
+</article>
+</a>
 {{#each timelines}}
-<div>
-  <a href="/timeline/{{this._id}}">
-    <h2>{{this.title}}</h2>
-  </a>
-  <a href="/timeline/{{this._id}}/edit">Edit</a>
-</div>
+<article>
+   
+    <span class="favorite">{{#if this.favorite}}
+      <i class="fas fa-star"></i>
+      {{else}}
+      <i class="far fa-star"></i>
+      {{/if}}
+      </span>
+    <span class="delete"><i class="fas fa-times"></i></span>
+    <h3>{{this.title}}</h3>
+    <div>
+    <a href="/timeline/{{this._id}}"><i class="fas fa-eye"></i></a>
+  
+  <a href="/timeline/{{this._id}}/edit"><i class="fas fa-pen"></i></a>
+  </div>
+</article>
+
 {{/each}}
+
+</div>

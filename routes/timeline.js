@@ -7,7 +7,7 @@ const Event = require("../models/event");
 
 router.get(`/`, (req, res, next) => {
   Timeline.find({}).then((dbRes) => {
-    res.render(`timeline/index`, { timelines: dbRes });
+    res.render(`timeline/index`, { timelines: dbRes, stylesheets: ["dashboard.css"] });
   });
 });
 
