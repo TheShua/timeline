@@ -16,13 +16,14 @@ router.get(`/`, async (req, res, next) => {
       author: { $ne: req.session.currentUser._id },
     });
   }
-  Timeline.find({}).then((dbRes) => {
+  
     res.render(`timeline/index`, {
       yourTimelines: yourTimelines,
       othersTimelines: othersTimelines,
+      stylesheets: ["dashboard.css"]
     });
   });
-});
+
 
 // New
 
