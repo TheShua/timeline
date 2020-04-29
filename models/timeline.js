@@ -21,6 +21,7 @@ const timelineSchema = new mongoose.Schema({
         enum: ["minutes", "days", "months", "years"]
     }, 
     image: String, 
+    favorite: Boolean
 })
 
 const Timeline = mongoose.model("Timeline", timelineSchema); 

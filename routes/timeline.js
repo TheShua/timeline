@@ -20,7 +20,8 @@ router.get(`/`, async (req, res, next) => {
     res.render(`timeline/index`, {
       yourTimelines: yourTimelines,
       othersTimelines: othersTimelines,
-      stylesheets: ["dashboard.css"]
+      stylesheets: ["dashboard.css"],
+      scripts:["favoriteSystem.js"]
     });
   });
 

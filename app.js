@@ -55,6 +55,7 @@ app.use(checkLoginStatus);
 
 app.use('/', require('./routes/home'));
 app.use('/timeline', require('./routes/timeline'));
+app.use('/api/timeline', require('./routes/timeline.api'))
 app.use('/event', require('./routes/event'));
 app.use('/user', require('./routes/user'));
 app.use('/api/user', require('./routes/user.api'));

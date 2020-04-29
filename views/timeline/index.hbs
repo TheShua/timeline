@@ -8,7 +8,7 @@
 </a>
 {{#each yourTimelines}}
 <article>
-   
+   <input type="hidden" value="{{this._id}}">
     <span class="favorite">{{#if this.favorite}}
       <i class="fas fa-star"></i>
       {{else}}
