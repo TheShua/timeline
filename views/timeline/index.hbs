@@ -1,7 +1,10 @@
-Index of timelines.
+<a href="/">« Homepage</a>
 
 {{#each timelines}}
 <div>
-  <a href="/timeline/{{this._id}}/edit">{{this.title}} · Edit</a>
+  <a href="/timeline/{{this._id}}">
+    <h2>{{this.title}}</h2>
+  </a>
+  <a href="/timeline/{{this._id}}/edit">Edit</a>
 </div>
 {{/each}}
