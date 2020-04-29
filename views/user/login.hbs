@@ -1,12 +1,15 @@
-<form action="/user/login" method="post">
-    {{#if errorMessage}}<p class="error">{{errorMessage}}</p>{{/if}}
-    <div class="element">
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" placeholder="woohoo@domain.com">
-    </div>
-    <div class="element">
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password">
-    </div>
-    <button>Log me in !! LOG ME IN !!!!</button>
-</form>
+<div class="miniwrap">
+    <form action="/user/login" method="post" class="main-content">
+        <h2>Log In</h2>
+        {{#if errorMessage}}<p class="error">{{errorMessage}}</p>{{/if}}
+        <div class="element">
+            <label for="email" class="inline">Email</label>
+            <input type="email" name="email" id="email" placeholder="woohoo@domain.com">
+        </div>
+        <div class="element">
+            <label for="password" class="inline">Password</label>
+            <input type="password" name="password" id="password">
+        </div>
+        <button>Log me</button>
+    </form>
+</div>
