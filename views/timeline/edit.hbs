@@ -113,7 +113,26 @@
             <input type="text" name="image" id="image" value="{{this.image}}">
             <label for="content">Content</label>
             <textarea name="content" id="content">{{this.content}}</textarea>
+            <div class="margin-top color-picker">
+                <label>Color</label>
+                <input type="radio" {{#compare this.color "red"}}checked{{/compare}} id="red-{{this.id}}" name="color"
+                    value="red">
+                <label class="color-choice red" for="red-{{this.id}}"></label>
+                <input type="radio" {{#compare this.color "blue"}}checked{{/compare}} id="blue-{{this.id}}" name="color"
+                    value="blue">
+                <label class="color-choice blue" for="blue-{{this.id}}"></label>
+                <input type="radio" {{#compare this.color "yellow"}}checked{{/compare}} id="yellow-{{this.id}}"
+                    name="color" value="yellow">
+                <label class="color-choice yellow" for="yellow-{{this.id}}"></label>
+                <input type="radio" {{#compare this.color "green"}}checked{{/compare}} id="green-{{this.id}}"
+                    name="color" value="green">
+                <label class="color-choice green" for="green-{{this.id}}"></label>
+            </div>
+            {{#if this.time_end.year}}
             <h4>Time Start</h4>
+            {{else}}
+            <h4>Time</h4>
+            {{/if}}
             <div class="time">
                 <div>
                     <label for="time_start_year">Year</label>
@@ -140,6 +159,7 @@
                         value="{{this.time_start.minute}}">
                 </div>
             </div>
+            {{#if this.time_end.year}}
             <h4>Time End</h4>
             <div class="time">
                 <div>
@@ -167,6 +187,7 @@
                         value="{{this.time_end.minute}}">
                 </div>
             </div>
+            {{/if}}
             <div class="buttons">
                 <button class="edit" data-id={{this._id}}>Save</button>
                 <button class="delete" data-id={{this._id}}>Delete</button>

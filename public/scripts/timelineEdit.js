@@ -13,7 +13,7 @@ function setNewEventButton() {
       title: form.title.value,
       image: form.image.value,
       content: form.content.value,
-      color: form.content.color,
+      color: form.color.value,
       time_start: {
         year: form.time_start_year.value,
         month: form.time_start_month.value,
@@ -34,7 +34,7 @@ function setNewEventButton() {
       const eventData = { ...apiRes.data };
       const newForm = createFilledForm(eventData);
       const eventList = document.getElementById("event-list");
-      eventList.insertBefore(newForm, eventList.firstChild);
+      eventList.insertBefore(newForm, eventList.querySelector("form"));
       resetValues(form);
     });
   };
@@ -107,69 +107,115 @@ function resetValues(form) {
   form.time_end_day.value = "";
   form.time_end_hour.value = "";
   form.time_end_minute.value = "";
+  const radios = form.querySelectorAll("[type='radio']");
+  radios.forEach((item) => {
+    item.checked = false;
+  });
 }
 
 function createFilledForm(data) {
   const form = document.createElement("form");
   form.classList.add("event-card");
   form.innerHTML = `
-<div>
+  <h4>${data.title}</h4>
+  <input class="event-toggle-checkbox" type="checkbox" id="title-toggle-${
+    data.id
+  }">
+  <label for="title-toggle-${data.id}">
+      <p class="edit">Edit</p>
+      <p class="close">Close</p>
+  </label>
   <label for="title">Title</label>
-  <input type="text" name="title" id="title" placeholder="title" value="${data.title}">
-</div>
-<div>
+  <input type="text" name="title" id="title" value="${data.title}">
   <label for="image">Image</label>
-  <input type="text" name="image" id="image" placeholder="image url" value=${data.image}>
-</div>
-<div>
+  <input type="text" name="image" id="image" value="${data.image}">
   <label for="content">Content</label>
   <textarea name="content" id="content">${data.content}</textarea>
-</div>
-<h4>Time Start</h4>
-<div>
-  <label for="time_start_year">Year</label>
-  <input type="number" name="time_start_year" id="time_start_year" value=${data.time_start.year}>
-</div>
-<div>
-  <label for="time_start_month">Month</label>
-  <input type="number" name="time_start_month" id="time_start_month" min="1" max="12" value=${data.time_start.month}>
-</div>
-<div>
-  <label for="time_start_day">Day</label>
-  <input type="number" name="time_start_day" id="time_start_day" min="1" max="31" value=${data.time_start.day}>
-</div>
-<div>
-  <label for="time_start_hour">Hour (24)</label>
-  <input type="number" name="time_start_hour" id="time_start_hour" min="0" max="23" value=${data.time_start.hour}>
-</div>
-<div>
-  <label for="time_start_minute">Minute</label>
-  <input type="number" name="time_start_minute" id="time_start_minute" min="0" max="59" value=${data.time_start.minute}>
-</div>
-<h4>Time End</h4>
-<div>
-  <label for="time_end_year">Year</label>
-  <input type="number" name="time_end_year" id="time_end_year" value=${data.time_end.year}>
-</div>
-<div>
-  <label for="time_end_month">Month</label>
-  <input type="number" name="time_end_month" id="time_end_month" min="1" max="12" value=${data.time_end.month}>
-</div>
-<div>
-  <label for="time_end_day">Day</label>
-  <input type="number" name="time_end_day" id="time_end_day" min="1" max="31" value=${data.time_end.day}>
-</div>
-<div>
-  <label for="time_end_hour">Hour (24)</label>
-  <input type="number" name="time_end_hour" id="time_end_hour" min="0" max="23" value=${data.time_end.hour}>
-</div>
-<div>
-  <label for="time_end_minute">Minute</label>
-  <input type="number" name="time_end_minute" id="time_end_minute" min="0" max="59" value=${data.time_end.minute}>
-</div>
-<input type="hidden" name="timeline" value="{{timeline._id}}">
-<button class="edit" data-id="${data._id}">Save</button>
-<button class="delete" data-id="${data._id}">Delete</delete>
+  <div class="margin-top color-picker">
+    <label>Color</label>
+    <input type="radio" ${data.color === "red" ? `checked` : ``} id="red-${
+    data.id
+  }" name="color" value="red">
+    <label class="color-choice red" for="red-${data.id}"></label>
+    <input type="radio" ${data.color === "blue" ? `checked` : ``} id="blue-${
+    data.id
+  }" name="color" value="blue">
+    <label class="color-choice blue" for="blue-${data.id}"></label>
+    <input type="radio" ${
+      data.color === "yellow" ? `checked` : ``
+    } id="yellow-${data.id}" name="color" value="yellow">
+    <label class="color-choice yellow" for="yellow-${data.id}"></label>
+    <input type="radio" ${data.color === "green" ? `checked` : ``} id="green-${
+    data.id
+  }" name="color" value="green">
+    <label class="color-choice green" for="green-${data.id}"></label>
+  </div>
+  ${data.time_end.year ? `<h4>Time Start</h4>` : `<h4>Time End</h4>`}
+  <div class="time">
+      <div>
+          <label for="time_start_year">Year</label>
+          <input type="number" name="time_start_year" id="time_start_year" value="${
+            data.time_start.year
+          }">
+      </div>
+      <div>
+          <label for="time_start_month">Month</label>
+          <input type="number" name="time_start_month" id="time_start_month" min="1" max="12"
+              value="${data.time_start.month}">
+      </div>
+      <div>
+          <label for="time_start_day">Day</label>
+          <input type="number" name="time_start_day" id="time_start_day" min="1" max="31"
+              value="${data.time_start.day}">
+      </div>
+      <div>
+          <label for="time_start_hour">Hour</label>
+          <input type="number" name="time_start_hour" id="time_start_hour" min="0" max="23"
+              value="${data.time_start.hour}">
+      </div>
+      <div>
+          <label for="time_start_minute">Minute</label>
+          <input type="number" name="time_start_minute" id="time_start_minute" min="0" max="59"
+              value="${data.time_start.minute}">
+      </div>
+  </div>
+  ${
+    !data.time_end.year
+      ? ``
+      : `
+  <h4>Time End</h4>
+  <div class="time">
+      <div>
+          <label for="time_end_year">Year</label>
+          <input type="number" name="time_end_year" id="time_end_year" value="${data.time_end.year}">
+      </div>
+      <div>
+          <label for="time_end_month">Month</label>
+          <input type="number" name="time_end_month" id="time_end_month" min="1" max="12"
+              value="${data.time_end.month}">
+      </div>
+      <div>
+          <label for="time_end_day">Day</label>
+          <input type="number" name="time_end_day" id="time_end_day" min="1" max="31"
+              value="${data.time_end.day}">
+      </div>
+      <div>
+          <label for="time_end_hour">Hour</label>
+          <input type="number" name="time_end_hour" id="time_end_hour" min="0" max="23"
+              value="${data.time_end.hour}">
+      </div>
+      <div>
+          <label for="time_end_minute">Minute</label>
+          <input type="number" name="time_end_minute" id="time_end_minute" min="0" max="59"
+              value="${data.time_end.minute}">
+      </div>
+  </div>
+  `
+  }
+  <div class="buttons">
+      <button class="edit" data-id=${data._id}>Save</button>
+      <button class="delete" data-id=${data._id}>Delete</button>
+  </div>
   `;
   addListenersToEventForm(form);
   return form;
@@ -185,6 +231,7 @@ function addListenersToEventForm(form) {
       title: form.title.value,
       image: form.image.value,
       content: form.content.value,
+      color: form.color.value,
       time_start: {
         year: form.time_start_year.value,
         month: form.time_start_month.value,

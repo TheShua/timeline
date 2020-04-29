@@ -68,7 +68,7 @@
     <div class="containt">
       <div class="bars">
         {{#each events}}
-        <div class="bar yellow {{#unless this.endRow}}point{{/unless}}"
+        <div class="bar {{this.color}} {{#unless this.endRow}}point{{/unless}}"
           style="grid-row-start: {{this.startRow}}; {{#if this.endRow}}grid-row-end: {{this.endRow}}{{/if}}">
           <div class="content">
             <div class="head">

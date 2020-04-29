@@ -25,12 +25,18 @@ router.get(`/`, async (req, res, next) => {
     });
   });
 
+  res.render(`timeline/index`, {
+    yourTimelines: yourTimelines,
+    othersTimelines: othersTimelines,
+    stylesheets: ["dashboard.css"],
+  });
+});
 
 // New
 
 router.get(`/new`, (req, res, next) => {
   res.render(`timeline/new`, {
-    stylesheets: ["form.css", "editing.css"]
+    stylesheets: ["form.css", "editing.css"],
   });
 });
 
