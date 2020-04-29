@@ -32,6 +32,65 @@
   padding: 20px;
 }
 
+// Event Card Toggle
+#event-list {
+  input:first-child {
+    display: none;
+    ~ * {
+      display: none;
+    }
+    + label {
+      display: block;
+      .close {
+        display: none;
+      }
+    }
+    &:checked {
+      ~ * {
+        display: flex;
+      }
+      + label {
+        .close {
+          display: block;
+        }
+        .edit {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+// Neve Event Timespan Toggle
+
+#new-event {
+  #span-or-point {
+    display: none;
+  }
+  #span-or-point + label {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  #span-or-point + label:after {
+    margin-left: 4px;
+  }
+  #span-or-point:not(:checked) + label:after {
+    content: "◻️";
+  }
+  #span-or-point:checked + label:after {
+    content: "☑️";
+  }
+  #span-or-point:not(:checked) ~ .is-span {
+    display: none;
+  }
+  #span-or-point:checked ~ .isnt-span {
+    display: none;
+  }
+}
+
 form {
   display: flex;
   flex-direction: column;

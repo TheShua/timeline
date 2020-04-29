@@ -5,7 +5,9 @@ const Event = require("../models/event");
 // Create
 
 router.post(`/`, (req, res, next) => {
-  Event.create(req.body).then((dbRes) => {
+  timeline = JSON.parse(JSON.stringify(req.body));
+  timeline.author = req.session.currentUser;
+  Event.create(timeline).then((dbRes) => {
     res.status(201).json(dbRes);
   });
 });

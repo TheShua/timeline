@@ -24,7 +24,12 @@
             <input type="text" name="image" id="image" placeholder="image url">
             <label for="content">Content</label>
             <textarea name="content" id="content"></textarea>
-            <h4>Time Start</h4>
+            <input type="checkbox" id="span-or-point">
+            <label for="span-or-point">
+                <p class="edit">Timespan</p>
+            </label>
+            <h4 class="isnt-span">Time</h4>
+            <h4 class="is-span">Time Start</h4>
             <div class="time">
                 <div>
                     <label for="time_start_year">Year</label>
@@ -39,7 +44,7 @@
                     <input type="number" name="time_start_day" id="time_start_day" min="1" max="31">
                 </div>
                 <div>
-                    <label for="time_start_hour">Hour (24)</label>
+                    <label for="time_start_hour">Hour</label>
                     <input type="number" name="time_start_hour" id="time_start_hour" min="0" max="23">
                 </div>
                 <div>
@@ -47,8 +52,8 @@
                     <input type="number" name="time_start_minute" id="time_start_minute" min="0" max="59">
                 </div>
             </div>
-            <h4>Time End</h4>
-            <div class="time">
+            <h4 class="is-span">Time End</h4>
+            <div class="time is-span">
                 <div>
                     <label for="time_end_year">Year</label>
                     <input type="number" name="time_end_year" id="time_end_year">
@@ -62,7 +67,7 @@
                     <input type="number" name="time_end_day" id="time_end_day" min="1" max="31">
                 </div>
                 <div>
-                    <label for="time_end_hour">Hour (24)</label>
+                    <label for="time_end_hour">Hour</label>
                     <input type="number" name="time_end_hour" id="time_end_hour" min="0" max="23">
                 </div>
                 <div>
@@ -80,6 +85,12 @@
         <h3>All Events</h3>
         {{#each events}}
         <form class="event-card">
+            {{this.title}}
+            <input type="checkbox" id="title-toggle-{{this.id}}">
+            <label for="title-toggle-{{this.id}}">
+                <p class="edit">Edit</p>
+                <p class="close">Close</p>
+            </label>
             <label for="title">Title</label>
             <input type="text" name="title" id="title" value="{{this.title}}">
             <label for="image">Image</label>
@@ -103,7 +114,7 @@
                         value="{{this.time_start.day}}">
                 </div>
                 <div>
-                    <label for="time_start_hour">Hour (24)</label>
+                    <label for="time_start_hour">Hour</label>
                     <input type="number" name="time_start_hour" id="time_start_hour" min="0" max="23"
                         value="{{this.time_start.hour}}">
                 </div>
@@ -130,7 +141,7 @@
                         value="{{this.time_end.day}}">
                 </div>
                 <div>
-                    <label for="time_end_hour">Hour (24)</label>
+                    <label for="time_end_hour">Hour</label>
                     <input type="number" name="time_end_hour" id="time_end_hour" min="0" max="23"
                         value="{{this.time_end.hour}}">
                 </div>
