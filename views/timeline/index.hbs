@@ -1,6 +1,16 @@
 <a href="/">« Homepage</a>
 
-{{#each timelines}}
+<h2>Your Timelines</h2>
+{{#each yourTimelines}}
+<div>
+  <a href="/timeline/{{this._id}}">
+    <h2>{{this.title}}</h2>
+  </a>
+  <a href="/timeline/{{this._id}}/edit">Edit</a>
+</div>
+{{/each}}
+<h2>Others' Timelines (Admin View)</h2>
+{{#each othersTimelines}}
 <div>
   <a href="/timeline/{{this._id}}">
     <h2>{{this.title}}</h2>
