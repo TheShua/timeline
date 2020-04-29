@@ -16,13 +16,17 @@ router.get(`/`, async (req, res, next) => {
       author: { $ne: req.session.currentUser._id },
     });
   }
-
-  res.render(`timeline/index`, {
-    yourTimelines: yourTimelines,
-    othersTimelines: othersTimelines,
-    stylesheets: ["dashboard.css"],
+  
+    res.render(`timeline/index`, {
+      yourTimelines: yourTimelines,
+      othersTimelines: othersTimelines,
+      stylesheets: ["dashboard.css"],
+      scripts:["favoriteSystem.js"]
+    });
   });
-});
+
+  
+
 
 // New
 
