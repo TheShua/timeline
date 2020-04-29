@@ -9,6 +9,7 @@ $color4: #f2e1ac;
 $color5: #d9145c;
 
 .miniwrap {
+	padding: 3em 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -18,12 +19,16 @@ $color5: #d9145c;
 }
 
 form.main-content {
-	width: 40%;
+	width: 40vw;
 	margin: 0 auto;
 	background: $color1;
 	position: relative;
 	padding: 2%;
 	border-radius: 20px;
+
+	&.large{
+		width: 70vw;
+	}
 
 	h2 {
 		color: $color4;
@@ -52,7 +57,7 @@ input[type='password'],
 select,
 textarea {
 	padding: 0.5em 1em;
-	border-radius: 5px;
+	border-radius: 5px ;
 	border: 0;
 	background: $color4;
 	font-family: 'Montserrat', sans-serif;
@@ -60,6 +65,16 @@ textarea {
 	height: 45px;
 	width: 300px;
 	border-bottom: 3px solid $color5;
+}
+
+select{
+	 -webkit-appearance: none;
+	 -moz-appearance: none;
+	 background-position: right 50%;
+	 background-repeat: no-repeat;
+	 background-image: url('data:image/svg+xml;utf8,<?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1"><path d="M4 8L0 4h8z"/></svg>');
+	//  padding: .5em;
+	 padding-right: 1.5em;
 }
 
 textarea {
@@ -171,7 +186,15 @@ button:hover {
 .element {
 	display: flex;
 	align-items: center;
+	
+	
+	&.text{
+		flex-wrap:wrap;
+		
+	}
 }
+
+
 
 label.inline {
 	background: $color5;
@@ -181,17 +204,22 @@ label.inline {
 	line-height: 35px;
 	border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
-	width: 40%;
+	width: 30vw;
 	font-family: 'Montserrat', sans-serif;
-	font-size: 1em;
+	font-size: 1.5vw;
 }
 
-label.inline + input {
+label.inline + input, label.inline + select {
 	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;
 	display: block;
 	transition: width 0.2s ease-in;
 	width: 100%;
+}
+
+label.inline + select{
+border-top-left-radius: 0;
+border-bottom-left-radius: 0;
 }
 
 // label.inline + input:focus {

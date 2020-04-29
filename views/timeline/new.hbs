@@ -1,24 +1,24 @@
-Form for a new timeline:
 
-<div>
-<form action="/timeline" method="POST">
-<h3>Add a new timeline</h3>
-<div>
-    <label for="title" >Title</label>
+
+<div class="miniwrap">
+<form class="main-content large" action="/timeline" method="POST">
+<h2>Add a new timeline</h2>
+<div class="element">
+    <label class="inline" for="title" >Title</label>
     <input id="title" type="text" name="title" placeholder="Bootcamp web dev" >
 
 </div>
 
-<div>
-    <label for="scope">Choose a scope</label>
+<div class="element">
+    <label class="inline" for="scope">Choose a scope</label>
     <select id="scope" name="scope">
         <option value="public">Public</option>
         <option value="private">Private</option>
     </select>
 </div>
 
-<div>
-    <label for="template">Choose a template</label>
+<div class="element">
+    <label class="inline" for="template">Choose a template</label>
     <select id="template" name="template">
         <option value="vertical_gantt">Vertical Gantt</option>
         <option value="vertical_flat">Vertical Flat</option>
@@ -26,15 +26,15 @@ Form for a new timeline:
     </select>
 </div>
 
-<div>
-    <label for="description">Description</label>
+<div class="element text">
+    <label class="inline" for="description">Description</label>
     <textarea id="description" name="description" placeholder="Add your description here"></textarea>
 
 </div>
 
 
 
-    <button type="text">Click me</button>
+    <button type="text">Create the timeline</button>
 </form>
 
 </div>

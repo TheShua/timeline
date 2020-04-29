@@ -28,7 +28,9 @@ router.get(`/`, async (req, res, next) => {
 // New
 
 router.get(`/new`, (req, res, next) => {
-  res.render(`timeline/new`);
+  res.render(`timeline/new`, {
+    stylesheets: ["form.css", "editing.css"]
+  });
 });
 
 // Create

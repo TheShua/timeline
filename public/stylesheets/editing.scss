@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700,900&display=swap');
+
+$color1: #252359;
+$color2: #2a2773;
+$color3: #273859;
+$color4: #f2e1ac;
+$color5: #d9145c;
+
+.element.text {
+
+textarea{
+    width: 100%;
+}
+
+label {
+    flex-basis: 100%;
+    display: block; 
+
+    &.inline{
+        position: relative;
+        margin-bottom: -16px;
+        width: 30vw;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+}
+}
+
+
