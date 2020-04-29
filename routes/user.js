@@ -122,7 +122,7 @@ router.get(`/show`, (req, res, next) => {
 	res.render(`user/show`, {
 		user: req.session.currentUser,
 		scripts: ['userEdit.js'],
-		stylesheets: ['user-profile.css'],
+		stylesheets: ['form.css', 'user-profile.css'],
 	});
 });
 
