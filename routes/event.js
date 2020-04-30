@@ -22,19 +22,25 @@ router.get(`/:id`, (req, res, next) => {
 // Update
 
 router.post(`/:id`, (req, res, next) => {
-  Event.findByIdAndUpdate(req.params.id, req.body, { new: true }).then(
-    (dbRes) => {
+  Event.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    .then((dbRes) => {
       res.status(201).json(dbRes);
-    }
-  );
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 // Destroy
 
 router.delete(`/:id`, (req, res, next) => {
-  Event.findByIdAndDelete(req.params.id).then((dbRes) => {
-    res.status(201).json(dbRes);
-  });
+  Event.findByIdAndDelete(req.params.id)
+    .then((dbRes) => {
+      res.status(201).json(dbRes);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   // console.log(`Delete: /event/${req.params.id}`);
 });
 
