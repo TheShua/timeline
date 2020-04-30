@@ -6,6 +6,10 @@ const userSchema = new mongoose.Schema({
     password:String, 
     creation_time: {type: Date, default:Date.now()},
     role:{type:String, enum:["admin", "user"], default: "user"}, 
+    image: {
+        type: String,
+        default:"",
+    }
 });
 
 const User = mongoose.model("User", userSchema);

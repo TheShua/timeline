@@ -14,12 +14,17 @@ const uploadCloud = require('../config/cloudinary.js');
 // Update
 //need to hash password again and check if email exist
 
-router.patch("/:id", (req, res) => {
+router.patch("/:id", uploadCloud.single("photo"), (req, res) => {
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const password = req.body.password;
     const hashPass = bcrypt.hashSync(password, salt);
 
     const updatedUser = {name: req.body.name, email: req.body.email, password: hashPass}; 
+
+    if (req.file) { 
+        updatedUser.image = req.file.secure_url
+    }
+    
     console.log(updatedUser)
  User.findByIdAndUpdate(req.params.id, updatedUser, {
                     new: true
