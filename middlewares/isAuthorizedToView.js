@@ -1,6 +1,6 @@
 const Timeline = require("../models/timeline.js");
 
-module.exports = function isAuthorizedToEdit(req, res, next) {
+module.exports = function isAuthorizedToView(req, res, next) {
   Timeline.findById(req.params.id)
     .then((dbRes) => {
       if (dbRes.scope == "public") {
