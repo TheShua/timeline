@@ -7,9 +7,8 @@
             <br>
         </h2>
 
-        <div><img src="{{this.image}}" alt="profile image"/></div>
+        <div><img src="{{user.image}}" alt="profile image"></div>
 
-        <i class="fa fa-camera-retro fa-lg"></i>
 
         <div class="label-profile">
             <input id="input-name" type="text" name="name" value="{{user.name}}" />
@@ -21,11 +20,11 @@
 
 
         <div class="label-profile" id="div-password">
-            <input  id="input-password" name="password" value="{{user.password}}" />
+            
+            <input id="input-password" type ="password" name="password" value="" />
             <span>
-            <i class="fa eye fa-eye-slash"></i>
-            <i class="fas fa-eye"></i>
-            </span>
+                <i class="fa eye fa-eye-slash"></i> 
+                </span>
         </div>
 
         {{!-- <div class="label-profile">

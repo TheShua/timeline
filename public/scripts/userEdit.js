@@ -1,5 +1,5 @@
 // PAULINE: need to add event listeners
-console.log("hey")
+
 const btnEdit = document.getElementById("btn-edit"); 
 
 //Update 
@@ -28,7 +28,7 @@ const editUser =(e)=>{
         const userEmail = document.querySelector(`#input-email`)
         const userPassword = document.querySelector(`#input-password`)
 
-        console.log(apiRes.data)
+        // console.log(apiRes.data)
         userName.textContent = apiRes.data.name;
         userEmail.textContent = apiRes.data.email;
         userPassword.textContent = apiRes.password;
@@ -41,5 +41,5 @@ const editUser =(e)=>{
 
 document.getElementById("form-profile").onsubmit = editUser;
 
-//document.getElementById("form-profile").addEventListener("submit", event => {
+
 

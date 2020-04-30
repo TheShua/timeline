@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
     role:{type:String, enum:["admin", "user"], default: "user"}, 
     image: {
         type: String,
-        default:"",
+        default: "https://images.pexels.com/photos/1736222/pexels-photo-1736222.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
     }
 });
 

@@ -19,12 +19,17 @@ router.patch("/:id", uploadCloud.single("photo"), (req, res) => {
     const password = req.body.password;
     const hashPass = bcrypt.hashSync(password, salt);
 
-    const updatedUser = {name: req.body.name, email: req.body.email, password: hashPass}; 
+    const updatedUser = {
+        name: req.body.name,
+        email: req.body.email,
+        password: hashPass
+    }
+    
 
     if (req.file) { 
         updatedUser.image = req.file.secure_url
     }
-    
+
     console.log(updatedUser)
  User.findByIdAndUpdate(req.params.id, updatedUser, {
                     new: true
@@ -42,6 +47,8 @@ router.patch("/:id", uploadCloud.single("photo"), (req, res) => {
             }); 
 
 
+
+//
 
 
 
