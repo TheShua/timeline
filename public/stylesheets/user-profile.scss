@@ -1,172 +1,54 @@
-// * {
-//     box-sizing: border-box;
-// }
-
-// html,
-// body {
-//     height: 100%;
-//     background-color: #252359;
-// }
-
-// #header-one {
-//     margin: 0 auto;
-   
-//     display: inline-block;
-//     font-size: 48px;
-//     line-height: 1;
-//     color: white;
-//     .fa-camera-retro {
-        
-//         width: 100px;
-//         height: 100px;
-//         padding: 20px;
-//         border: 2px solid #fff;
-//         cursor: pointer;
-//         border-radius: 50%;
-//         transition:(background-color .3s ease);
-//         &:hover {
-//             background-color: rgba(255, 255, 255, .2);
-//         }
-// }
-// }
-
-// #container {
-//     max-width: 500px;
-//     margin: 0 auto;
-//     padding: 20px;
-// }
-
-
-// .btn-profile {
-//     font-family: 'Lato', sans-serif;
-//     border: none;
-//     width: 100%;
-//     display: block;
-//     padding: 15px;
-//     background-color: #fff;
-//     font-size: 18px;
-//     color: #D9145C;
-//     cursor: pointer;
-//     margin-bottom: 10px;
-
-//     &:hover,
-//     &:focus {
-//         color: #333;
-//         outline: none;
-//     }
-// }
-
-
-// main style
-
-// .label-profile {
-//     position: relative;
-//     margin-bottom: 10px;
-
-//     label,
-//     input,
-//     textarea {
-//         font-family: 'Lato', sans-serif;
-//         font-size: 24px;
-//         font-weight: 300;
-//     }
-
-//     input, input[type="email"], input[type="password"],
-//     textarea,
-//     input:-internal-autofill-selected {
-        
-//         outline: none;
-//         border: none;
-//         width: 100%;
-//         display: block;
-//         cursor: pointer;
-
-
-//         Main style
-//         font-family: 'Lato', sans-serif;
-//         font-size: 24px;
-//         border-bottom: 1px solid rgba(255, 255, 255, .7);
-//         background: none !important;
-//         color: #fff;
-//         padding: 15px 20px 10px 10px;
-//     }
-
-//     label {
-//         position: absolute;
-//         left: 10px;
-//         top: 18px;
-//         color: #fff;
-//         pointer-events: none;
-
-//     }
-
-//     textarea {
-//         height: 100px;
-//         resize: none;
-//     }
-
-    
-// }
-
-@import url('https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700,900&display=swap');
-
-$color1: #252359;
-$color2: #2a2773;
-$color3: #273859;
-$color4: #f2e1ac;
-$color5: #d9145c;
+@import 'global.scss';
+@import 'form.scss';
 
 .main-content {
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 70vh;
+	margin-top: 40px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 70vh;
 
-input{
-    margin-top: 10px;
-}
+	input {
+		margin-top: 10px;
+	}
 
-button {
-    margin-top: 10px;
-    margin-bottom: 5px;
-}
+	button {
+		margin-top: 10px;
+		margin-bottom: 5px;
+	}
 
-img {
+	img {
+		width: 80px;
+		height: 80px;
+		padding: 20px;
 
-            width: 80px;
-            height: 80px;
-            padding: 20px;
-           
-            border-bottom: 3px solid $color5;
-            background: $color4;
-            cursor: pointer;
-            border-radius: 50%;
-            transition:(background-color .3s ease);
-            &:hover {
-                background-color: rgba(255, 255, 255, .2);
-            }
-        }
+		border-bottom: 3px solid $color5;
+		background: $color4;
+		cursor: pointer;
+		border-radius: 50%;
+		transition: (background-color 0.3s ease);
+		&:hover {
+			background-color: rgba(255, 255, 255, 0.2);
+		}
+	}
 
-#div-password {
-    position:relative;
+	#div-password {
+		position: relative;
 
-    span{
-        position: absolute;
-        right:10px;
-        top:14px;
-        padding:9px 8px;
+		span {
+			position: absolute;
+			right: 10px;
+			top: 14px;
+			padding: 9px 8px;
 
-    .eye{
-        cursor:pointer;
+			.eye {
+				cursor: pointer;
 
-        .show {
-            color: rgba(255, 255, 255, .9);
-        }
-    }
-        
-    }
-}
+				.show {
+					color: rgba(255, 255, 255, 0.9);
+				}
+			}
+		}
+	}
 }

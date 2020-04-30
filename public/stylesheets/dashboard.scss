@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700,900&display=swap');
+@import 'global.scss';
 
-$color1: #252359;
-$color2: #2a2773;
-$color3: #273859;
-$color4: #f2e1ac;
-$color5: #d9145c;
+#wrapper {
+	grid-template-rows: repeat(1, 150px 1fr);
+	grid-template-columns: 35vw 1fr;
+	height: 100vh;
+	width: 100vw;
+}
 
 #container {
 	padding: 3em;

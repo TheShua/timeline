@@ -1,24 +1,5 @@
-// .container {
-//   max-width: 800px;
-//   margin-left: auto;
-//   margin-right: auto;
-// }
-
-@import url('reset.css');
-@import url('https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700,900&display=swap');
-
-$color1: #252359;
-$color2: #2a2773;
-$color3: #273859;
-$color4: #f2e1ac;
-$color5: #d9145c;
-
-/* Bar Colors Category Thingy-things */
-$bar-red: red;
-$bar-yellow: yellow;
-$bar-green: green;
-$bar-blue: blue;
+@import 'reset.css';
+@import 'variables.scss';
 
 * {
 	box-sizing: border-box;
@@ -38,15 +19,6 @@ body {
 
 #wrapper {
 	display: grid;
-
-	// EDIT THIS !!!!! NEED TO BE EDITED !!! I NEED TO EDIT THIS !!!! OK ? I HAVE TO DO IT ! but not now, I'm tired
-	grid-template-areas:
-		'nav nav'
-		'left main';
-	grid-template-rows: repeat(1, 150px 1fr);
-	grid-template-columns: 35vw 1fr;
-	height: 100vh;
-	width: 100vw;
 }
 
 nav {
@@ -144,6 +116,7 @@ input:-webkit-autofill:active {
 	-webkit-box-shadow: 0 0 0px 1000px $color4 inset;
 	// transition: background-color 5000s ease-in-out 0s;
 }
+
 .blue {
 	background: $bar-blue;
 }

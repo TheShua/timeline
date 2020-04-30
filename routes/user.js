@@ -122,7 +122,7 @@ router.get(`/show`, (req, res, next) => {
 	res.render(`user/show`, {
 		user: req.session.currentUser,
 		scripts: ['userEdit.js'],
-		stylesheets: ['form.css', 'user-profile.css'],
+		stylesheets: ['user-profile.css'],
 	});
 });
 
@@ -142,7 +142,6 @@ router.get(`/show`, (req, res, next) => {
 // });
 
 // Destroy
-
 
 router.get(`/logout`, (req, res, next) => {
 	req.session.destroy((err) => {
