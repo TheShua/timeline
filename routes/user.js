@@ -150,10 +150,12 @@ router.get(`/logout`, (req, res, next) => {
 });
 
 router.post(`/:id/delete`, (req, res, next) => {
+	console.log(req.params.id)
 	User.findByIdAndDelete(req.params.id)
-
 		.then((dbRes) => {
-			res.redirect(`/user/signup`);
+			req.session.destroy(() => {
+				res.redirect(`/user/signup`);
+			})			
 		})
 		.catch((err) => {
 			console.log(err);

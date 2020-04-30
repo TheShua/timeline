@@ -19,28 +19,26 @@
 
         <div class="element label-profile">
             <input id="input-email" type="email" name="email" value="{{user.email}}" />
-            <p class="error">{{error.response.data.message}}</p>
+            <p class="error"></p>
         </div>
 
 
         <div class="element label-profile" id="div-password">
 
-            <input id="input-password" type="password" name="password" value="password" />
-            <span>
+            <input id="input-password" type="text" name="password" value="password" />
+            <span class="visible">
                 <i class="fa eye fa-eye-slash"></i>
+                {{!-- <i class="fas fa-eye"></i> --}}
             </span>
         </div>
 
-        {{!-- <div class="label-profile">
-            <textarea name="notes" id="text-note" placeholder="Note"></textarea>
-            <label for="notes"></label>
-        </div> --}}
+       
 
         <button data-userId="{{user._id}}" id="btn-edit" class="btn-profile">Edit</button>
 
     </form>
     {{!-- Delete account --}}
-    <form action="/user/{{user._id}}/delete" method="POST">
-        <button id="delete-btn" class="btn-profile" type="text">Delete my account</button>
+    <form action="/user/{{user._id}}/delete" method="POST" id="form-delete">
+        <button id="delete-btn" class="btn-profile" type="text" value="{{user._id}}">Delete my account</button>
 
     </form>

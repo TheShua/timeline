@@ -7,10 +7,12 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	// height: 70vh;
+	
 
-	// input {
-	// 	margin-top: 10px;
+	// .error{
+	// 	color: pink;
+	// 	text-align: center;
+		
 	// }
 
 	button {
@@ -37,7 +39,7 @@
 		span {
 			position: absolute;
 			right: 10px;
-			top: 14px;
+			top: 6px;
 			padding: 9px 8px;
 
 			.eye {
