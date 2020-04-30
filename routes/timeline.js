@@ -6,6 +6,8 @@ const multer = require("multer");
 const upload = multer();
 const uploadCloud = require("../config/cloudinary.js");
 const isAuthenticated = require("../middlewares/isAuthenticated.js");
+const isAuthorizedToEdit = require("../middlewares/isAuthorizedToEdit.js");
+const isAuthorizedToView = require("../middlewares/isAuthorizedToView.js");
 
 // Index
 
@@ -51,7 +53,7 @@ router.post(`/`, uploadCloud.single("image"), (req, res, next) => {
 
 // Show
 
-router.get(`/:id`, async (req, res, next) => {
+router.get(`/:id`, isAuthorizedToView, async (req, res, next) => {
   try {
     let events = await Event.find({ timeline: req.params.id });
     const timeline = await Timeline.findById(req.params.id);
@@ -81,7 +83,8 @@ router.get(`/:id`, async (req, res, next) => {
 
 // Edit
 
-router.get(`/:id/edit`, isAuthenticated, async (req, res, next) => {
+router.get(`/:id/edit`, isAuthorizedToEdit, async (req, res, next) => {
+  console.log("Here we are!");
   try {
     const events = await Event.find({ timeline: req.params.id });
     const timeline = await Timeline.findById(req.params.id);
