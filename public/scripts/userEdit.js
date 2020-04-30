@@ -33,13 +33,45 @@ const editUser =(e)=>{
         userEmail.textContent = apiRes.data.email;
         userPassword.textContent = apiRes.password;
     })
-    .catch((apiErr) => {
-        console.log(apiErr);
+        .catch((apiErr) => {
+        
+            const error = document.querySelector(".error");
+            error.textContent = apiErr.response.data.message;
+        
     });
 
 } ;
 
 document.getElementById("form-profile").onsubmit = editUser;
+
+
+// Password
+
+const eye = document.querySelector(".fa.eye"); 
+const input = document.querySelector("#input-password"); 
+
+const changeVisibility = () => {
+    if (input.type === "password") {
+        input.type="text"
+    } else {
+        input.type = "password"; 
+    }
+}
+
+eye.onclick = changeVisibility; 
+
+// Delete button are you sure?
+
+const deleteBtn = document.querySelector("#delete-btn");
+
+
+const displayMessage = () => {
+    confirm("Are you sure you want to leave us :'(? ")
+}
+
+deleteBtn.onclick = displayMessage(); 
+
+
 
 
 
