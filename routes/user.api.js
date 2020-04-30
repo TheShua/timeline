@@ -14,44 +14,73 @@ const uploadCloud = require('../config/cloudinary.js');
 // Update
 //need to hash password again and check if email exist
 
-router.patch("/:id", uploadCloud.single("photo"), (req, res) => {
-    const salt = bcrypt.genSaltSync(bcryptSalt);
-    const password = req.body.password;
-    const hashPass = bcrypt.hashSync(password, salt);
+router.patch("/:id", uploadCloud.single("photo"), async (req, res) => {
 
-    const updatedUser = {
-        name: req.body.name,
-        email: req.body.email,
-        password: hashPass
-    }
-    
 
-    if (req.file) { 
-        updatedUser.image = req.file.secure_url
-    }
+    try {
+                // console.log(req.body)
 
-    console.log(updatedUser)
- User.findByIdAndUpdate(req.params.id, updatedUser, {
-                    new: true
-                })
-                .then((dbResult) => {
+                const findEmail = await User.findOne({ email: req.body.email })
+                    .then((user) => {
+                        if (user && user._id == req.params.id) {
+                            return false
+                        } else {
+                            return true
+                        }
+                    })
+                    .catch((err) => { console.log(err) });
+        
+        if (findEmail) {
+            res.status(500).json({message: "Email already taken, sorry" })
+            
+                    }
+        
                     
-                    res.status(200).json(dbResult)
-                   
-                })
-                .catch((dbErr) => {
-                    res.status(500).json(dbErr)
-                    
-                });
+                
+                
+                
+                console.log(findEmail)
 
-            }); 
-
+                const salt = bcrypt.genSaltSync(bcryptSalt);
+                const password = req.body.password;
+                const hashPass = bcrypt.hashSync(password, salt);
 
 
-//
+                const updatedUser = {
+                    name: req.body.name,
+                    email: req.body.email,
+                    password: hashPass
+                }
+
+                if (req.file) {
+                    updatedUser.image = req.file.secure_url
+                }
+
+
+                console.log(updatedUser)
+
+                User.findByIdAndUpdate(req.params.id, updatedUser, {
+                        new: true
+                    })
+                    .then((dbResult) => {
+
+                        res.status(200).json(dbResult)
+
+                    })
+                    .catch((dbErr) => {
+                        res.status(500).json(dbErr)
+
+                    });
+
+            } catch (err) {
+                console.log(err)
+            }
+})
+
+
+        //
 
 
 
 
-module.exports = router;
-
+        module.exports = router;
