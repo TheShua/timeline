@@ -3,6 +3,7 @@ console.log("Howdy there");
 setTimelineSaveButton();
 setNewEventButton();
 setDeleteButton();
+updateTimelinePreview(document.querySelector("#timeline-edit form").id.value);
 
 function setNewEventButton() {
   const newEventButton = document.querySelector("#new-event button");
