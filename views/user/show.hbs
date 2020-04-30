@@ -7,7 +7,10 @@
             <br>
         </h2>
 
-        <div><img src="{{user.image}}" alt="profile image"></div>
+        <div>
+          <label for="profile-img"> <img src="{{user.image}}" alt="profile image"></label>
+          <input style="display:none" type="file" id="profile-img" name="pic">
+        </div>
 
 
         <div class="label-profile">
@@ -16,12 +19,13 @@
 
         <div class="label-profile">     
             <input id="input-email" type="email" name="email" value="{{user.email}}" />
+           <p class="error">{{error.response.data.message}}</p>
         </div>
 
 
         <div class="label-profile" id="div-password">
             
-            <input id="input-password" type ="password" name="password" value="" />
+            <input id="input-password" type="password" name="password" value="password" />
             <span>
                 <i class="fa eye fa-eye-slash"></i> 
                 </span>
@@ -37,9 +41,10 @@
     </form>
     {{!-- Delete account --}}
     <form action="/user/{{user._id}}/delete" method="POST">
-        <button class="btn-profile" type="text">Delete my account</button>
+        <button id="delete-btn" class="btn-profile" type="text">Delete my account</button>
+
     </form>
 
-  
+   
 
-</div>
+  
