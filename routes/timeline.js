@@ -5,10 +5,11 @@ const Event = require("../models/event");
 const multer = require("multer");
 const upload = multer();
 const uploadCloud = require("../config/cloudinary.js");
+const isAuthenticated = require("../middlewares/isAuthenticated.js");
 
 // Index
 
-router.get(`/`, async (req, res, next) => {
+router.get(`/`, isAuthenticated, async (req, res, next) => {
   const yourTimelines = await Timeline.find({
     author: req.session.currentUser._id,
   });
@@ -29,7 +30,7 @@ router.get(`/`, async (req, res, next) => {
 
 // New
 
-router.get(`/new`, (req, res, next) => {
+router.get(`/new`, isAuthenticated, (req, res, next) => {
   res.render(`timeline/new`, {
     stylesheets: ["editing.css"],
   });
@@ -80,7 +81,7 @@ router.get(`/:id`, async (req, res, next) => {
 
 // Edit
 
-router.get(`/:id/edit`, async (req, res, next) => {
+router.get(`/:id/edit`, isAuthenticated, async (req, res, next) => {
   try {
     const events = await Event.find({ timeline: req.params.id });
     const timeline = await Timeline.findById(req.params.id);
