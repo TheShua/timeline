@@ -1,13 +1,13 @@
 <div class="miniwrap">
-    <form class="main-content large" action="/timeline" method="POST">
+    <form class="main-content large" action="/timeline" method="POST" enctype="multipart/form-data">
         <h2>Add a new timeline</h2>
         <div class="element">
             <label class="inline" for="title">Title</label>
             <input id="title" type="text" name="title" placeholder="Web Dev Bootcamp">
         </div>
         <div class="element">
-            <label class="inline" for="image">Image</label>
-            <input id="image" type="text" name="image">
+            <label for="image" class="inline">Image</label>
+            <input id="image" name="image" type="file">
         </div>
         <div class="element">
             <label class="inline" for="scope">Scope</label>

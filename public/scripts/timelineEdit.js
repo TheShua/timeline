@@ -116,13 +116,16 @@ function setTimelineSaveButton() {
   saveButton.onclick = function (e) {
     e.preventDefault();
     const form = saveButton.closest("form");
-    const timeline = {};
-    timeline.title = form.title.value;
-    timeline.scope = form.scope.value;
-    timeline.description = form.description.value;
-    updateTimelinePreview(form.id.value);
-    axios.post(`/timeline/${form.id.value}`, timeline).then((apiRes) => {
-      document.querySelector("h2").innerText = timeline.title;
+    const formData = new FormData();
+    formData.append("title", form.title.value);
+    formData.append("scope", form.scope.value);
+    formData.append("image", form.image.files[0]);
+    formData.append("description", form.description.value);
+    axios.post(`/timeline/${form.id.value}`, formData).then((apiRes) => {
+      console.log(apiRes);
+      const h2 = document.querySelector("h2");
+      h2.innerText = apiRes.data.title;
+      h2.style.backgroundImage = `url("${apiRes.data.image}")`;
       console.log("Saved!");
     });
   };
