@@ -3,12 +3,18 @@
   <p>{{timeline.description}}</p>
 
 </aside>
+<style>
+  section .containt .bars {
+    width: 90%;
+  }
+</style>
+
 <section>
   <div class="containt">
     <div class="bars">
       {{#each events}}
       <div class="bar {{this.color}} {{#unless this.endRow}}point{{/unless}}"
-        style="grid-row-start: {{this.startRow}}; {{#if this.endRow}}grid-row-end: {{this.endRow}}{{/if}}">
+        style="grid-column-start: {{this.startRow}}; {{#if this.endRow}}grid-column-end: {{this.endRow}}{{/if}}">
         <div class="content">
           <div class="head">
             <h3>{{this.title}}</h3>

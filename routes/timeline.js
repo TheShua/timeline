@@ -46,35 +46,50 @@ router.post(`/`, uploadCloud.single("image"), (req, res, next) => {
   if (req.file) {
     timeline.image = req.file.url;
   }
-  Timeline.create(timeline).then((dbResult) => {
-    res.redirect(`/timeline/${dbResult._id}/edit`);
-  });
+  Timeline.create(timeline)
+    .then((dbResult) => {
+      res.redirect(`/timeline/${dbResult._id}/edit`);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 // Show
 
+// MAKING CHANGES
 router.get(`/:id`, isAuthorizedToView, async (req, res, next) => {
   try {
     let events = await Event.find({ timeline: req.params.id });
     const timeline = await Timeline.findById(req.params.id);
     events = JSON.parse(JSON.stringify(events));
-    setDates(events);
-    const minDate = getMinDate(events);
-    const maxDate = getMaxDate(events);
-    const unit = setUnit(events, minDate, maxDate);
-    setRows(events, unit, minDate);
+    let minDate = null;
+    let maxDate = null;
+    let unit = null;
+    if (events.length > 0) {
+      setDates(events);
+      minDate = getMinDate(events);
+      maxDate = getMaxDate(events);
+      unit = setUnit(events, minDate, maxDate);
+      setRows(events, unit, minDate);
+    }
+    const payload = {
+      events: events,
+      timeline: timeline,
+      scripts: ["timelineView.js"],
+      stylesheets: ["style-01.css"],
+      minDate: minDate,
+      maxDate: maxDate,
+      unit: unit,
+    };
     if (req.query.format === "json") {
       res.status(201).json(events);
     } else {
-      res.render(`timeline/show`, {
-        events: events,
-        timeline: timeline,
-        scripts: ["timelineView.js"],
-        stylesheets: ["style-01.css"],
-        minDate: minDate,
-        maxDate: maxDate,
-        unit: unit,
-      });
+      if (timeline.template == "horizontal") {
+        res.render(`timeline/show_horizontal`, payload);
+      } else {
+        res.render(`timeline/show`, payload);
+      }
     }
   } catch (err) {
     console.log(err);
@@ -84,7 +99,6 @@ router.get(`/:id`, isAuthorizedToView, async (req, res, next) => {
 // Edit
 
 router.get(`/:id/edit`, isAuthorizedToEdit, async (req, res, next) => {
-  console.log("Here we are!");
   try {
     const events = await Event.find({ timeline: req.params.id });
     const timeline = await Timeline.findById(req.params.id);
@@ -122,10 +136,13 @@ router.post(`/:id`, uploadCloud.single("image"), (req, res, next) => {
 // Destroy
 
 router.post(`/:id/delete`, (req, res, next) => {
-  console.log("delete");
-  Timeline.findByIdAndDelete(req.params.id).then((dbRes) => {
-    res.redirect(`/timeline`);
-  });
+  Timeline.findByIdAndDelete(req.params.id)
+    .then((dbRes) => {
+      res.redirect(`/timeline`);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 // Module Export

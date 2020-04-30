@@ -163,6 +163,12 @@ button {
 	position: relative;
 	display: block;
 	margin: 0 auto;
+
+	a {
+		font-weight: 500;
+		color: $color4;
+		text-decoration: none;
+	}
 }
 
 button:hover {
@@ -204,6 +210,11 @@ label.inline + select {
 	display: block;
 	transition: width 0.2s ease-in;
 	width: 100%;
+}
+
+label.inline + input[type='radio'] {
+	// border-radius: 5px;
+	max-width: 50px;
 }
 
 label.inline + select {
