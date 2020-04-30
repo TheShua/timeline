@@ -16,7 +16,7 @@ router.get(`/`, (req, res, next) => {
 router.get(`/signup`, (req, res, next) => {
 	// console.log(`/user/new`);
 	res.render(`user/new`, {
-		stylesheets: ['form.css'],
+		stylesheets: ['user-profile.css'],
 	});
 });
 
@@ -73,7 +73,7 @@ router.post(`/signup`, (req, res, next) => {
  */
 router.get(`/login`, (req, res, next) => {
 	res.render(`user/login`, {
-		stylesheets: ['form.css'],
+		stylesheets: ['user-profile.css'],
 	});
 });
 
