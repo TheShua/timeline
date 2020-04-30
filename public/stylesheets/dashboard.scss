@@ -50,10 +50,10 @@ $color5: #d9145c;
 				display: block;
 				height: 80%;
 				width: 40%;
-				background: url('/medias/img/plus.png') center no-repeat;
-				opacity: 1;
+				background: url('/medias/img/plus.svg') center no-repeat;
+				opacity: 0.7;
 				margin: auto auto;
-				// filter: invert(100%);
+				filter: invert(100%);
 			}
 
 			&.add:hover {

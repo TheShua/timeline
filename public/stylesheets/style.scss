@@ -14,6 +14,12 @@ $color3: #273859;
 $color4: #f2e1ac;
 $color5: #d9145c;
 
+/* Bar Colors Category Thingy-things */
+$bar-red: red;
+$bar-yellow: yellow;
+$bar-green: green;
+$bar-blue: blue;
+
 * {
 	box-sizing: border-box;
 	margin: 0;
@@ -137,4 +143,19 @@ input:-webkit-autofill:active {
 	-webkit-text-fill-color: $color5 !important;
 	-webkit-box-shadow: 0 0 0px 1000px $color4 inset;
 	// transition: background-color 5000s ease-in-out 0s;
+}
+.blue {
+	background: $bar-blue;
+}
+
+.red {
+	background: $bar-red;
+}
+
+.yellow {
+	background: $bar-yellow;
+}
+
+.green {
+	background: $bar-green;
 }
