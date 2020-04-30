@@ -10,11 +10,14 @@
     {{#each stylesheets}}
     <link rel="stylesheet" href="/stylesheets/{{this}}">
     {{/each}}
+    {{#unless stylesheets}}
+    <link rel="stylesheet" href="/stylesheets/global.css">
+    {{/unless}}
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     {{#each scripts}}
     <script src="/scripts/{{this}}" type="module"></script>
     {{/each}}
-    <script  src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     <title>Timeline</title>
 </head>
 

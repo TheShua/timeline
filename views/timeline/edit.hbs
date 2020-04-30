@@ -1,22 +1,31 @@
 <aside class="left-panel">
-    <a href="/timeline">« Timelines</a>
     <h2>{{timeline.title}}</h2>
     <div id="timeline-edit">
         <form>
             <h3>Edit Timeline</h3>
             <input type="hidden" name="id" value="{{timeline.id}}">
-            <label for="title">Title</label>
-            <input id="title" value="{{timeline.title}}" type="text" name="title" placeholder="Bootcamp web dev">
-            <label for="image">Image</label>
-            <input type="text" name="image" id="image" value="{{this.image}}">
-            <label for="scope">Scope</label>
-            <select id="scope" name="scope">
-                <option {{#compare timeline.scope "public"}}selected{{/compare}} value="public">Public</option>
-                <option {{#compare timeline.scope "private"}}selected{{/compare}} value="private">Private</option>
-            </select>
+            <div class="element">
+                <label class="inline" for="title">Title</label>
+                <input id="title" value="{{timeline.title}}" type="text" name="title" placeholder="Bootcamp web dev">
+            </div>
+            <div class="element">
+                <label class="inline" for="image">Image</label>
+                <input type="text" name="image" id="image" value="{{this.image}}">
+            </div>
+            <div class="element">
+                <label class="inline" for="scope">Scope</label>
+                <select id="scope" name="scope">
+                    <option {{#compare timeline.scope "public"}}selected{{/compare}} value="public">Public</option>
+                    <option {{#compare timeline.scope "private"}}selected{{/compare}} value="private">Private</option>
+                </select>
+            </div>
+
             <p>Collaborators</p>
-            <label for="description">Description</label>
-            <textarea id="description" name="description">{{timeline.description}}</textarea>
+            <div class="element text">
+                <label class="inline" for="description">Description</label>
+                <textarea id="description" name="description">{{timeline.description}}</textarea>
+            </div>
+
             <div class="buttons">
                 <button class="save" type="text">Save</button>
                 <button class="view" type="text">

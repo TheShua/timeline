@@ -2,13 +2,13 @@
 @import 'form.scss';
 
 #wrapper {
+	// only for dev purposes
+	// grid-template-columns: 80vw 1fr;
 	grid-template-areas:
 		'nav nav'
 		'left main';
-	grid-template-rows: repeat(1, 150px 1fr);
+	grid-template-rows: repeat(1, $header-height 1fr);
 	grid-template-columns: 35vw 1fr;
-	height: 100vh;
-	width: 100vw;
 }
 
 input,
@@ -38,11 +38,6 @@ select {
 		box-shadow: 1px 1px 0 0 white, 1px -1px 0 0 white, -1px -1px 0 0 white, -1px 1px 0 0 white, 2px 2px 0 0 lightgrey,
 			2px -2px 0 0 lightgrey, -2px -2px 0 0 lightgrey, -2px 2px 0 0 lightgrey;
 	}
-}
-
-#wrapper {
-	// only for dev purposes
-	// grid-template-columns: 80vw 1fr;
 }
 
 .deletePrompt {
@@ -79,7 +74,7 @@ select {
 
 button:hover {
 	cursor: pointer;
-	background-color: lightgrey;
+	// background-color: lightgrey;
 }
 
 .left-panel {
@@ -190,20 +185,23 @@ form {
 		border-radius: none;
 		display: flex;
 		justify-content: space-between;
-		button {
-			display: inline-block;
-			flex: 1;
-			padding: 5px;
-			font-family: unset;
-			border: none;
-			margin-right: 10px;
+		> button {
+			width: 30%;
 		}
-		button:last-child {
-			margin-right: 0;
-		}
-		textarea {
-			min-width: 100%;
-		}
+		// button {
+		// 	display: inline-block;
+		// 	flex: 1;
+		// 	padding: 5px;
+		// 	font-family: unset;
+		// 	border: none;
+		// 	margin-right: 10px;
+		// }
+		// button:last-child {
+		// 	margin-right: 0;
+		// }
+		// textarea {
+		// 	min-width: 100%;
+		// }
 	}
 	.time {
 		display: flex;
