@@ -58,11 +58,16 @@ router.get(`/:id`, isAuthorizedToView, async (req, res, next) => {
     let events = await Event.find({ timeline: req.params.id });
     const timeline = await Timeline.findById(req.params.id);
     events = JSON.parse(JSON.stringify(events));
-    setDates(events);
-    const minDate = getMinDate(events);
-    const maxDate = getMaxDate(events);
-    const unit = setUnit(events, minDate, maxDate);
-    setRows(events, unit, minDate);
+    const minDate = null;
+    const maxDate = null;
+    const unit = null;
+    if (events.length > 0) {
+      setDates(events);
+      minDate = getMinDate(events);
+      maxDate = getMaxDate(events);
+      unit = setUnit(events, minDate, maxDate);
+      setRows(events, unit, minDate);
+    }
     if (req.query.format === "json") {
       res.status(201).json(events);
     } else {
