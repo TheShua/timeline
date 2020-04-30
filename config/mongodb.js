@@ -9,4 +9,4 @@ mongoose.connect(process.env.MONGODB_URI, {
 
 mongoose.connection.on('connected', () => console.log(' Mongodb connected :)'));
 
-mongoose.connection.on('error', () => console.log('Db error:('));
+mongoose.connection.on('error', (err) => console.log(err));
