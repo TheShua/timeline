@@ -22,13 +22,18 @@ $color5: #d9145c;
 
 body {
 	background: radial-gradient($color3, $color1);
+	background-repeat: no-repeat;
 	background-size: cover;
+	background-attachment: fixed;
 	font-family: 'Montserrat', sans-serif;
 	font-size: 1vw;
+	height: 100vh;
 }
 
 #wrapper {
 	display: grid;
+
+	// EDIT THIS !!!!! NEED TO BE EDITED !!! I NEED TO EDIT THIS !!!! OK ? I HAVE TO DO IT ! but not now, I'm tired
 	grid-template-areas:
 		'nav nav'
 		'left main';
