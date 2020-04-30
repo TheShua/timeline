@@ -36,6 +36,9 @@ function setNewEventButton() {
       const eventList = document.getElementById("event-list");
       eventList.insertBefore(newForm, eventList.querySelector("form"));
       resetValues(form);
+      updateTimelinePreview(
+        document.querySelector("#timeline-edit form").id.value
+      );
     });
   };
 }
@@ -78,6 +81,35 @@ document.querySelectorAll("#event-list form").forEach((form) => {
   addListenersToEventForm(form);
 });
 
+async function updateTimelinePreview(id) {
+  const timelineData = await axios.get(`/timeline/${id}?format=json`);
+  renderTimeline(timelineData.data);
+}
+
+function renderTimeline(timelineData) {
+  const bars = document.querySelector(".bars");
+  const containt = document.querySelector(".containt");
+  containt.innerHTML = "";
+  bars.innerHTML = "";
+  timelineData.forEach((bar) => {
+    bars.innerHTML += `
+    <div class="bar ${bar.color} " style="grid-row-start: ${bar.startRow}${
+      bar.endRow ? `; grid-row-end: ${bar.endRow}` : ``
+    }">
+      <div class="content">
+          <div class="head">
+              <h3>${bar.title}</h3>
+          </div>
+          <div class="icon text-${bar.color}">T</div>
+          <h4>Category</h4>
+          <p>${bar.content}.</p>
+      </div>
+    </div>
+    `;
+    containt.appendChild(bars);
+  });
+}
+
 function setTimelineSaveButton() {
   const saveButton = document.querySelector("#timeline-edit button.save");
   saveButton.onclick = function (e) {
@@ -87,6 +119,7 @@ function setTimelineSaveButton() {
     timeline.title = form.title.value;
     timeline.scope = form.scope.value;
     timeline.description = form.description.value;
+    updateTimelinePreview(form.id.value);
     axios.post(`/timeline/${form.id.value}`, timeline).then((apiRes) => {
       document.querySelector("h2").innerText = timeline.title;
       console.log("Saved!");
@@ -251,6 +284,9 @@ function addListenersToEventForm(form) {
     axios.post(`/event/${id}`, eventBody).then((apiRes) => {
       form.querySelector("h4").innerText = form.title.value;
       editButton.style.background = "green";
+      updateTimelinePreview(
+        document.querySelector("#timeline-edit form").id.value
+      );
       setTimeout(function () {
         editButton.style.background = null;
       }, 200);
@@ -261,6 +297,9 @@ function addListenersToEventForm(form) {
     e.preventDefault();
     axios.delete(`/event/${id}`).then((apiRes) => {
       form.style.border = "5px solid red";
+      updateTimelinePreview(
+        document.querySelector("#timeline-edit form").id.value
+      );
       setTimeout(function () {
         form.remove();
       }, 200);

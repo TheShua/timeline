@@ -16,17 +16,14 @@ router.get(`/`, async (req, res, next) => {
       author: { $ne: req.session.currentUser._id },
     });
   }
-  
-    res.render(`timeline/index`, {
-      yourTimelines: yourTimelines,
-      othersTimelines: othersTimelines,
-      stylesheets: ["dashboard.css"],
-      scripts:["favoriteSystem.js"]
-    });
+
+  res.render(`timeline/index`, {
+    yourTimelines: yourTimelines,
+    othersTimelines: othersTimelines,
+    stylesheets: ["dashboard.css"],
+    scripts: ["favoriteSystem.js"],
   });
-
-  
-
+});
 
 // New
 
@@ -58,15 +55,19 @@ router.get(`/:id`, async (req, res, next) => {
     const maxDate = getMaxDate(events);
     const unit = setUnit(events, minDate, maxDate);
     setRows(events, unit, minDate);
-    res.render(`timeline/show`, {
-      events: events,
-      timeline: timeline,
-      scripts: ["timelineView.js"],
-      stylesheets: ["style-01.css"],
-      minDate: minDate,
-      maxDate: maxDate,
-      unit: unit,
-    });
+    if (req.query.format === "json") {
+      res.status(201).json(events);
+    } else {
+      res.render(`timeline/show`, {
+        events: events,
+        timeline: timeline,
+        scripts: ["timelineView.js"],
+        stylesheets: ["style-01.css"],
+        minDate: minDate,
+        maxDate: maxDate,
+        unit: unit,
+      });
+    }
   } catch (err) {
     console.log(err);
   }
@@ -82,7 +83,12 @@ router.get(`/:id/edit`, async (req, res, next) => {
       events: events,
       timeline: timeline,
       scripts: ["timelineEdit.js"],
-      stylesheets: ["timeline-edit.css", "form.css", "editing.css"],
+      stylesheets: [
+        "timeline-edit.css",
+        "form.css",
+        "editing.css",
+        "style-01.css",
+      ],
     });
   } catch (err) {
     console.log(err);
