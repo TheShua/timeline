@@ -126,6 +126,7 @@ aside {
 	background: $color1;
 	padding: 2em;
 	border-right: 0.5em solid $color4;
+	overflow-y: auto;
 }
 section {
 	grid-area: 'main';
