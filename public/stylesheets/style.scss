@@ -14,21 +14,32 @@ $color3: #273859;
 $color4: #f2e1ac;
 $color5: #d9145c;
 
+/* Bar Colors Category Thingy-things */
+$bar-red: red;
+$bar-yellow: yellow;
+$bar-green: green;
+$bar-blue: blue;
+
 * {
 	box-sizing: border-box;
 	margin: 0;
-	padding:0;
+	padding: 0;
 }
 
 body {
 	background: radial-gradient($color3, $color1);
+	background-repeat: no-repeat;
 	background-size: cover;
+	background-attachment: fixed;
 	font-family: 'Montserrat', sans-serif;
-	font-size: 1.25vw;
+	font-size: 1vw;
+	height: 100vh;
 }
 
 #wrapper {
 	display: grid;
+
+	// EDIT THIS !!!!! NEED TO BE EDITED !!! I NEED TO EDIT THIS !!!! OK ? I HAVE TO DO IT ! but not now, I'm tired
 	grid-template-areas:
 		'nav nav'
 		'left main';
@@ -118,7 +129,6 @@ nav {
 	}
 }
 
-
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -133,6 +143,19 @@ input:-webkit-autofill:active {
 	-webkit-text-fill-color: $color5 !important;
 	-webkit-box-shadow: 0 0 0px 1000px $color4 inset;
 	// transition: background-color 5000s ease-in-out 0s;
-	
+}
+.blue {
+	background: $bar-blue;
 }
 
+.red {
+	background: $bar-red;
+}
+
+.yellow {
+	background: $bar-yellow;
+}
+
+.green {
+	background: $bar-green;
+}

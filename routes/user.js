@@ -122,7 +122,7 @@ router.get(`/show`, (req, res, next) => {
 	res.render(`user/show`, {
 		user: req.session.currentUser,
 		scripts: ['userEdit.js'],
-		stylesheets: ['user-profile.css'],
+		stylesheets: ['form.css', 'user-profile.css'],
 	});
 });
 
@@ -143,6 +143,13 @@ router.get(`/show`, (req, res, next) => {
 
 // Destroy
 
+
+router.get(`/logout`, (req, res, next) => {
+	req.session.destroy((err) => {
+		res.redirect('/');
+	});
+});
+
 router.post(`/:id/delete`, (req, res, next) => {
 	User.findByIdAndDelete(req.params.id)
 
@@ -152,12 +159,6 @@ router.post(`/:id/delete`, (req, res, next) => {
 		.catch((err) => {
 			console.log(err);
 		});
-});
-
-router.get(`/logout`, (req, res, next) => {
-	req.session.destroy((err) => {
-		res.redirect('/');
-	});
 });
 
 module.exports = router;
