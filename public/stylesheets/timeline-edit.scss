@@ -1,14 +1,31 @@
 @import 'global.scss';
 @import 'form.scss';
+@import 'timeline.scss';
 
 #wrapper {
+	// only for dev purposes
+	// grid-template-columns: 80vw 1fr;
 	grid-template-areas:
 		'nav nav'
 		'left main';
-	grid-template-rows: repeat(1, 150px 1fr);
+	grid-template-rows: repeat(1, $header-height 1fr);
 	grid-template-columns: 35vw 1fr;
-	height: 100vh;
-	width: 100vw;
+}
+
+h2 {
+	font-family: 'Bebas Neue', sans-serif;
+	color: $color4;
+	font-size: 1.8em;
+	text-shadow: 2px 2px 0 $color5;
+	text-align: center;
+}
+
+h3 {
+	font-family: 'Bebas Neue', sans-serif;
+	color: $color4;
+	font-size: 1.3em;
+	text-align: right;
+	margin: 2em 0 0.5em;
 }
 
 input,
@@ -38,11 +55,6 @@ select {
 		box-shadow: 1px 1px 0 0 white, 1px -1px 0 0 white, -1px -1px 0 0 white, -1px 1px 0 0 white, 2px 2px 0 0 lightgrey,
 			2px -2px 0 0 lightgrey, -2px -2px 0 0 lightgrey, -2px 2px 0 0 lightgrey;
 	}
-}
-
-#wrapper {
-	// only for dev purposes
-	// grid-template-columns: 80vw 1fr;
 }
 
 .deletePrompt {
@@ -79,26 +91,19 @@ select {
 
 button:hover {
 	cursor: pointer;
-	background-color: lightgrey;
+	// background-color: lightgrey;
 }
 
 .left-panel {
 	a,
 	h2 {
-		color: unset;
 		text-decoration: none;
 		margin: 20px;
 	}
-	// grid-area: left;
-	color: white;
 	label {
 		text-transform: uppercase;
 		font-size: 0.7em;
 		// margin-top: 10px;
-	}
-	h3 {
-		padding: 0;
-		margin: 0;
 	}
 	h4 {
 		padding: 20px 0 0 0;
@@ -178,11 +183,11 @@ button:hover {
 }
 
 form {
-	display: flex;
-	flex-direction: column;
-	padding: 20px;
-	border: 1px solid white;
-	border-radius: 4px;
+	// display: flex;
+	// flex-direction: column;
+	// padding: 20px;
+	// border: 1px solid white;
+	// border-radius: 4px;
 	margin-top: 20px;
 	.buttons {
 		margin-top: 20px;
@@ -190,20 +195,23 @@ form {
 		border-radius: none;
 		display: flex;
 		justify-content: space-between;
-		button {
-			display: inline-block;
-			flex: 1;
-			padding: 5px;
-			font-family: unset;
-			border: none;
-			margin-right: 10px;
+		> button {
+			width: 30%;
 		}
-		button:last-child {
-			margin-right: 0;
-		}
-		textarea {
-			min-width: 100%;
-		}
+		// button {
+		// 	display: inline-block;
+		// 	flex: 1;
+		// 	padding: 5px;
+		// 	font-family: unset;
+		// 	border: none;
+		// 	margin-right: 10px;
+		// }
+		// button:last-child {
+		// 	margin-right: 0;
+		// }
+		// textarea {
+		// 	min-width: 100%;
+		// }
 	}
 	.time {
 		display: flex;

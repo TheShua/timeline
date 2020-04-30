@@ -195,6 +195,10 @@ label.inline {
 	font-size: 1.05em;
 }
 
+aside label.inline {
+	width: 15vw;
+}
+
 label.inline + input,
 label.inline + select {
 	border-top-left-radius: 0;

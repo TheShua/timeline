@@ -1,17 +1,12 @@
 @import 'global.scss';
 
-#wrapper {
-	grid-template-rows: repeat(1, $header-height 1fr);
-	height: 100vh;
-	width: 100vw;
-}
-
 #container {
 	padding: 3em;
 	grid-gap: 50px;
 	display: grid;
 	grid-column: 1 / -1;
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	align-content: start;
 
 	article {
 		background-color: $color4;

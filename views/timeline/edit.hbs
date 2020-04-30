@@ -7,18 +7,27 @@
         <form enctype="multipart/form-data">
             <h3>Edit Timeline</h3>
             <input type="hidden" name="id" value="{{timeline.id}}">
-            <label for="title">Title</label>
-            <input id="title" value="{{timeline.title}}" type="text" name="title" placeholder="Bootcamp web dev">
-            <label for="image">Replace Image</label>
-            <input id="image" name="image" type="file">
-            <label for="scope">Scope</label>
-            <select id="scope" name="scope">
-                <option {{#compare timeline.scope "public"}}selected{{/compare}} value="public">Public</option>
-                <option {{#compare timeline.scope "private"}}selected{{/compare}} value="private">Private</option>
-            </select>
-            <p>Collaborators</p>
-            <label for="description">Description</label>
-            <textarea id="description" name="description">{{timeline.description}}</textarea>
+            <div class="element">
+                <label class="inline" for="title">Title</label>
+                <input id="title" value="{{timeline.title}}" type="text" name="title" placeholder="Bootcamp web dev">
+            </div>
+            <div class="element">
+                <label class="inline" for="image">Image</label>
+                <input type="text" name="image" id="image" value="{{this.image}}">
+            </div>
+            <div class="element">
+                <label class="inline" for="scope">Scope</label>
+                <select id="scope" name="scope">
+                    <option {{#compare timeline.scope "public"}}selected{{/compare}} value="public">Public</option>
+                    <option {{#compare timeline.scope "private"}}selected{{/compare}} value="private">Private</option>
+                </select>
+            </div>
+            {{!-- <p>Collaborators</p> --}}
+            <div class="element text">
+                <label class="inline" for="description">Description</label>
+                <textarea id="description" name="description">{{timeline.description}}</textarea>
+            </div>
+
             <div class="buttons">
                 <button class="save" type="text">Save</button>
                 <button class="view" type="text">
@@ -33,27 +42,35 @@
     <div id="new-event" class="{{#compare timeline.template "vertical_flat"}}flat{{/compare}}">
         <form>
             <h3>New Event</h3>
-            <label for="title">Title</label>
-            <input type="text" name="title" id="title" placeholder="title">
-            <label for="image">Image</label>
-            <input type="text" name="image" id="image" placeholder="image url">
-            <label for="content">Content</label>
-            <textarea name="content" id="content"></textarea>
-            <div class="margin-top color-picker">
-                <label>Color</label>
-                <input type="radio" id="red" name="color" value="red">
-                <label class="color-choice red" for="red"></label>
-                <input type="radio" id="blue" name="color" value="blue">
-                <label class="color-choice blue" for="blue"></label>
-                <input type="radio" id="yellow" name="color" value="yellow">
-                <label class="color-choice yellow" for="yellow"></label>
-                <input type="radio" id="green" name="color" value="green">
-                <label class="color-choice green" for="green"></label>
+            <div class="element">
+                <label class="inline" for="title">Title</label>
+                <input type="text" name="title" id="title" placeholder="title">
             </div>
-            <input type="checkbox" id="span-or-point">
-            <label for="span-or-point" class="margin-top span-option">
-                <p class="edit">Timespan</p>
-            </label>
+            <div class="element">
+                <label class="inline" for="image">Image</label>
+                <input type="text" name="image" id="image" placeholder="image url">
+            </div>
+            <div class="element text">
+                <label class="inline" for="content">Content</label>
+                <textarea name="content" id="content"></textarea>
+            </div>
+            <div class="element">
+                <div class="margin-top color-picker">
+                    <label>Color</label>
+                    <input type="radio" id="red" name="color" value="red">
+                    <label class="color-choice red" for="red"></label>
+                    <input type="radio" id="blue" name="color" value="blue">
+                    <label class="color-choice blue" for="blue"></label>
+                    <input type="radio" id="yellow" name="color" value="yellow">
+                    <label class="color-choice yellow" for="yellow"></label>
+                    <input type="radio" id="green" name="color" value="green">
+                    <label class="color-choice green" for="green"></label>
+                </div>
+                <input type="checkbox" id="span-or-point">
+                <label for="span-or-point" class="margin-top span-option">
+                    <p class="edit">Timespan</p>
+                </label>
+            </div>
             <h4 class="isnt-span">Time</h4>
             <h4 class="is-span">Time Start</h4>
             <div class="time">
