@@ -14,9 +14,6 @@ $color5: #d9145c;
 	grid-column: 1 / -1;
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 
-	.big-new {
-	}
-
 	article {
 		background-color: $color4;
 		text-align: center;
