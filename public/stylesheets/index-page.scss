@@ -3,18 +3,20 @@
 
 #big-wrap{
 
-    border: 1px solid green;
+   
     width: 100vw;
     display: flex;
     justify-content: space-evenly;
-    flex-direction: column;
-    margin-top: 20px;
+    // flex-direction: column;
+    margin-top: 50px;
     align-content: center;
 
 
 .petit-wrap{
     margin: 20px 20px 30px 20px;
-    width: 50vw;
+    width: 60vw;
+    height: 50vh;
+    margin-left: 40px;
     
 }
 
@@ -42,19 +44,20 @@ h2 {
 
 p{
     color: $color4;
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 20px;
-    text-align: center;
+    text-align:  start;
 }
 }
 
 
 #flex-div {
-    border: 1px solid orange;
+    
     display: flex;
     align-self: flex-start;
     align-items: center;
-    height: 50%;
+    
+    
 
     >*{
         margin-top: 10px;
@@ -62,7 +65,7 @@ p{
 }
 
 .list-type1 {
-    border: 1px solid blueviolet;
+   
     align-self: center;
     padding-right: 40px;
     width: 400px;
@@ -117,6 +120,11 @@ p{
             border-radius: 2em;
             color: #FFF;
 
+        }
+
+        >a{
+            text-decoration: none;
+            color: #d9145c;
         }
     }
 
