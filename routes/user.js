@@ -143,6 +143,13 @@ router.get(`/show`, (req, res, next) => {
 
 // Destroy
 
+
+router.get(`/logout`, (req, res, next) => {
+	req.session.destroy((err) => {
+		res.redirect('/');
+	});
+});
+
 router.post(`/:id/delete`, (req, res, next) => {
 	User.findByIdAndDelete(req.params.id)
 
@@ -152,12 +159,6 @@ router.post(`/:id/delete`, (req, res, next) => {
 		.catch((err) => {
 			console.log(err);
 		});
-});
-
-router.get(`/logout`, (req, res, next) => {
-	req.session.destroy((err) => {
-		res.redirect('/');
-	});
 });
 
 module.exports = router;

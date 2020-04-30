@@ -1,35 +1,35 @@
-<div id="container">
-    <form data-userId="{{user._id}}" id="form-profile" action="/user/show" method="POST" enctype="multipart/form-data">
+<div class="miniwrap main-content">
+    <form data-userId="{{user._id}}" class="main-content" id="form-profile" action="/user/show" method="POST" enctype="multipart/form-data">
 
-        <h1 id="header-one">
+    
+        <h2 id="header-one">
             Your Profile
             <br>
-            <i class="fa fa-camera-retro fa-lg"></i>
-        </h1>
+        </h2>
+
+        <i class="fa fa-camera-retro fa-lg"></i>
 
         <div class="label-profile">
-            <label for="name"></label>
             <input id="input-name" type="text" name="name" value="{{user.name}}" />
-
         </div>
 
-        <div class="label-profile">
-            <label for="email"></label>
+        <div class="label-profile">     
             <input id="input-email" type="email" name="email" value="{{user.email}}" />
         </div>
 
 
-        <div class="label-profile">
-           
-           
-            <input id="input-password" type="password" name="password" value="{{user.password}}" />
-            <fa class="fa eye fa-eye-slash"></fa>
+        <div class="label-profile" id="div-password">
+            <input  id="input-password" name="password" value="{{user.password}}" />
+            <span>
+            <i class="fa eye fa-eye-slash"></i>
+            <i class="fas fa-eye"></i>
+            </span>
         </div>
 
-        <div class="label-profile">
+        {{!-- <div class="label-profile">
             <textarea name="notes" id="text-note" placeholder="Note"></textarea>
             <label for="notes"></label>
-        </div>
+        </div> --}}
 
         <button data-userId="{{user._id}}" id="btn-edit" class="btn-profile">Edit</button>
 
@@ -38,5 +38,7 @@
     <form action="/user/{{user._id}}/delete" method="POST">
         <button class="btn-profile" type="text">Delete my account</button>
     </form>
+
+  
 
 </div>

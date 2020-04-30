@@ -4,6 +4,10 @@ const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const bcryptSalt = 10;
 
+const multer = require('multer');
+const upload = multer();
+const uploadCloud = require('../config/cloudinary.js');
+
 //AJAX TO EDIT THE PROFILE - Same page 
 //prefixe /api/user
 
@@ -31,7 +35,6 @@ router.patch("/:id", (req, res) => {
                 });
 
             }); 
-
 
 
 
