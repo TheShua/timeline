@@ -1,8 +1,7 @@
 @import 'global.scss';
 
 #wrapper {
-	grid-template-rows: repeat(1, 150px 1fr);
-	grid-template-columns: 35vw 1fr;
+	grid-template-rows: repeat(1, $header-height 1fr);
 	height: 100vh;
 	width: 100vw;
 }

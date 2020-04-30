@@ -208,3 +208,24 @@ label.inline + select {
 	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;
 }
+
+.element.text {
+	textarea {
+		width: 100%;
+	}
+
+	label {
+		flex-basis: 100%;
+		display: block;
+
+		&.inline {
+			position: relative;
+			margin-bottom: -16px;
+			width: 30vw;
+			border-bottom-left-radius: 0;
+			border-bottom-right-radius: 0;
+			border-top-left-radius: 5px;
+			border-top-right-radius: 5px;
+		}
+	}
+}
