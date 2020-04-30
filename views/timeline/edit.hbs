@@ -1,7 +1,5 @@
 <aside class="left-panel">
-    <a href="/timeline">« Timelines</a>
-    <h2
-        style="min-height: 3em; background-image: url('{{timeline.image}}'); background-size: cover; background-position: center center;">
+    <h2 style="min-height: 3em; background-image: url('{{timeline.image}}'); background-size: cover; background-position: center center;">
         {{timeline.title}}</h2>
     <div id="timeline-edit">
         <form enctype="multipart/form-data">
@@ -12,7 +10,7 @@
                 <input id="title" value="{{timeline.title}}" type="text" name="title" placeholder="Bootcamp web dev">
             </div>
             <div class="element">
-                <label for="image">Replace Image</label>
+                <label class="inline" for="image">Replace Image</label>
                 <input id="image" name="image" type="file">
             </div>
             <div class="element">
@@ -142,17 +140,13 @@
             <textarea name="content" id="content">{{this.content}}</textarea>
             <div class="margin-top color-picker">
                 <label>Color</label>
-                <input type="radio" {{#compare this.color "red"}}checked{{/compare}} id="red-{{this.id}}" name="color"
-                    value="red">
+                <input type="radio" {{#compare this.color "red"}}checked{{/compare}} id="red-{{this.id}}" name="color" value="red">
                 <label class="color-choice red" for="red-{{this.id}}"></label>
-                <input type="radio" {{#compare this.color "blue"}}checked{{/compare}} id="blue-{{this.id}}" name="color"
-                    value="blue">
+                <input type="radio" {{#compare this.color "blue"}}checked{{/compare}} id="blue-{{this.id}}" name="color" value="blue">
                 <label class="color-choice blue" for="blue-{{this.id}}"></label>
-                <input type="radio" {{#compare this.color "yellow"}}checked{{/compare}} id="yellow-{{this.id}}"
-                    name="color" value="yellow">
+                <input type="radio" {{#compare this.color "yellow"}}checked{{/compare}} id="yellow-{{this.id}}" name="color" value="yellow">
                 <label class="color-choice yellow" for="yellow-{{this.id}}"></label>
-                <input type="radio" {{#compare this.color "green"}}checked{{/compare}} id="green-{{this.id}}"
-                    name="color" value="green">
+                <input type="radio" {{#compare this.color "green"}}checked{{/compare}} id="green-{{this.id}}" name="color" value="green">
                 <label class="color-choice green" for="green-{{this.id}}"></label>
             </div>
             {{#if this.time_end.year}}
@@ -167,23 +161,19 @@
                 </div>
                 <div>
                     <label for="time_start_month">Month</label>
-                    <input type="number" name="time_start_month" id="time_start_month" min="1" max="12"
-                        value="{{this.time_start.month}}">
+                    <input type="number" name="time_start_month" id="time_start_month" min="1" max="12" value="{{this.time_start.month}}">
                 </div>
                 <div>
                     <label for="time_start_day">Day</label>
-                    <input type="number" name="time_start_day" id="time_start_day" min="1" max="31"
-                        value="{{this.time_start.day}}">
+                    <input type="number" name="time_start_day" id="time_start_day" min="1" max="31" value="{{this.time_start.day}}">
                 </div>
                 <div>
                     <label for="time_start_hour">Hour</label>
-                    <input type="number" name="time_start_hour" id="time_start_hour" min="0" max="23"
-                        value="{{this.time_start.hour}}">
+                    <input type="number" name="time_start_hour" id="time_start_hour" min="0" max="23" value="{{this.time_start.hour}}">
                 </div>
                 <div>
                     <label for="time_start_minute">Minute</label>
-                    <input type="number" name="time_start_minute" id="time_start_minute" min="0" max="59"
-                        value="{{this.time_start.minute}}">
+                    <input type="number" name="time_start_minute" id="time_start_minute" min="0" max="59" value="{{this.time_start.minute}}">
                 </div>
             </div>
             {{#if this.time_end.year}}
@@ -195,23 +185,19 @@
                 </div>
                 <div>
                     <label for="time_end_month">Month</label>
-                    <input type="number" name="time_end_month" id="time_end_month" min="1" max="12"
-                        value="{{this.time_end.month}}">
+                    <input type="number" name="time_end_month" id="time_end_month" min="1" max="12" value="{{this.time_end.month}}">
                 </div>
                 <div>
                     <label for="time_end_day">Day</label>
-                    <input type="number" name="time_end_day" id="time_end_day" min="1" max="31"
-                        value="{{this.time_end.day}}">
+                    <input type="number" name="time_end_day" id="time_end_day" min="1" max="31" value="{{this.time_end.day}}">
                 </div>
                 <div>
                     <label for="time_end_hour">Hour</label>
-                    <input type="number" name="time_end_hour" id="time_end_hour" min="0" max="23"
-                        value="{{this.time_end.hour}}">
+                    <input type="number" name="time_end_hour" id="time_end_hour" min="0" max="23" value="{{this.time_end.hour}}">
                 </div>
                 <div>
                     <label for="time_end_minute">Minute</label>
-                    <input type="number" name="time_end_minute" id="time_end_minute" min="0" max="59"
-                        value="{{this.time_end.minute}}">
+                    <input type="number" name="time_end_minute" id="time_end_minute" min="0" max="59" value="{{this.time_end.minute}}">
                 </div>
             </div>
             {{/if}}

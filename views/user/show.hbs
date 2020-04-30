@@ -1,34 +1,34 @@
 <div class="miniwrap main-content">
     <form data-userId="{{user._id}}" class="main-content" id="form-profile" action="/user/show" method="POST" enctype="multipart/form-data">
 
-    
+
         <h2 id="header-one">
             Your Profile
             <br>
         </h2>
 
-        <div>
-          <label for="profile-img"> <img src="{{user.image}}" alt="profile image"></label>
-          <input style="display:none" type="file" id="profile-img" name="pic">
+        <div class="element">
+            <label for="profile-img"> <img src="{{user.image}}" alt="profile image"></label>
+            <input style="display:none" type="file" id="profile-img" name="pic">
         </div>
 
 
-        <div class="label-profile">
+        <div class="element label-profile">
             <input id="input-name" type="text" name="name" value="{{user.name}}" />
         </div>
 
-        <div class="label-profile">     
+        <div class="element label-profile">
             <input id="input-email" type="email" name="email" value="{{user.email}}" />
-           <p class="error">{{error.response.data.message}}</p>
+            <p class="error">{{error.response.data.message}}</p>
         </div>
 
 
-        <div class="label-profile" id="div-password">
-            
+        <div class="element label-profile" id="div-password">
+
             <input id="input-password" type="password" name="password" value="password" />
             <span>
-                <i class="fa eye fa-eye-slash"></i> 
-                </span>
+                <i class="fa eye fa-eye-slash"></i>
+            </span>
         </div>
 
         {{!-- <div class="label-profile">
@@ -44,7 +44,3 @@
         <button id="delete-btn" class="btn-profile" type="text">Delete my account</button>
 
     </form>
-
-   
-
-  
