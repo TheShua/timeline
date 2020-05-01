@@ -6,7 +6,7 @@
     </article>
   </a>
   {{#each yourTimelines}}
-  <article>
+  <article style="background-image: url('{{this.image}}')">
     <input type="hidden" value="{{this._id}}">
     <span class="favorite">{{#if this.favorite}}
       <i class="fas fa-star"></i>
