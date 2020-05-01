@@ -3,6 +3,7 @@ console.log("Howdy there");
 setTimelineSaveButton();
 setNewEventButton();
 setDeleteButton();
+setFormButtons();
 updateTimelinePreview(document.querySelector("#timeline-edit form").id.value);
 
 function setNewEventButton() {
@@ -39,21 +40,22 @@ function setNewEventButton() {
       parentDiv.appendChild(newForm);
       const eventList = document.querySelector("#event-list .tab");
       const firstChild = document.querySelector("#event-list .tab label");
-      parentDiv.classList.add(`delete-${apiRes.data.id}`);
-      parentDiv.id = `edit-event-${apiRes.data.id}`;
+      parentDiv.classList.add(`delete-${apiRes.data._id}`);
+      parentDiv.id = `edit-event-${apiRes.data._id}`;
       eventList.insertBefore(parentDiv, firstChild);
       const label = document.createElement("label");
-      label.classList.add(`delete-${apiRes.data.id}`);
-      label.setAttribute("for", `event-list-toggle-${apiRes.data.id}`);
-      label.innerHTML = `<h4 id="title-${apiRes.data.id}">${form.title.value}</h4>`;
+      label.classList.add(`delete-${apiRes.data._id}`);
+      label.setAttribute("for", `event-list-toggle-${apiRes.data._id}`);
+      label.innerHTML = `<h4 id="title-${apiRes.data._id}">${form.title.value}</h4>`;
       const input = document.createElement("input");
       input.setAttribute("type", "radio");
       input.setAttribute("name", "event-list-toggle");
-      input.setAttribute("id", `event-list-toggle-${apiRes.data.id}`);
-      input.classList.add(`delete-${apiRes.data.id}`);
+      input.setAttribute("id", `event-list-toggle-${apiRes.data._id}`);
+      input.classList.add(`delete-${apiRes.data._id}`);
       input.classList.add(`event-list-toggle`);
       eventList.insertBefore(input, parentDiv);
       eventList.insertBefore(label, input);
+      setFormButtons();
       resetValues(form);
       updateTimelinePreview(
         document.querySelector("#timeline-edit form").id.value
@@ -97,9 +99,11 @@ function setDeleteButton() {
   };
 }
 
-document.querySelectorAll("#event-list form").forEach((form) => {
-  addListenersToEventForm(form);
-});
+function setFormButtons() {
+  document.querySelectorAll("#event-list form").forEach((form) => {
+    addListenersToEventForm(form);
+  });
+}
 
 async function updateTimelinePreview(id) {
   const timelineData = await axios.get(`/timeline/${id}?format=json`);
