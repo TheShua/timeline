@@ -5,7 +5,7 @@
 	grid-gap: 50px;
 	display: grid;
 	grid-column: 1 / -1;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(300px, 0.25fr));
 	align-content: start;
 
 	article {
@@ -24,8 +24,8 @@
 		background-image: url('https://images.pexels.com/photos/697662/pexels-photo-697662.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
 		background-position: center center;
 		background-size: cover;
-
 		transition: all 0.2s ease-in;
+
 		&:hover {
 			transform: scale(1.1);
 		}

@@ -53,10 +53,10 @@
                     <label class="inline" for="title">Title</label>
                     <input type="text" name="title" id="title" placeholder="Title">
                 </div>
-                {{!-- <div class="element">
+                <div class="element hidden">
                     <label class="inline" for="image">Image</label>
                     <input type="text" name="image" id="image" placeholder="image url">
-                </div> --}}
+                </div>
                 <div class="element text">
                     <label class="inline" for="content">Content</label>
                     <textarea name="content" id="content"></textarea>
@@ -153,7 +153,8 @@
     <div id="event-list">
         <label class="title" for="eventsTab">
             <h3>Events list</h3>
-        </label><input type="checkbox" id="eventsTab" class="trick">
+        </label>
+        <input type="checkbox" id="eventsTab" class="trick">
         <div class="tab">
             {{#each events}}
             <form class="event-card">

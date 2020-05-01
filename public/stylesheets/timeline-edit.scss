@@ -42,6 +42,10 @@ select {
 	}
 }
 
+.element.hidden {
+	display: none;
+}
+
 .time-lord {
 	display: flex;
 	justify-content: space-between;
