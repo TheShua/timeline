@@ -23,19 +23,19 @@ const editUser =(e)=>{
         name: nameInputValue,
         email: emailInputValue,
         password: passwordInputValue,
-        image: imageInputValue,
+        
     })
     .then((apiRes)=>{
         const userName= document.querySelector(`#input-name`)
         const userEmail = document.querySelector(`#input-email`)
         const userPassword = document.querySelector(`#input-password`)
-        const userImage = document.querySelector(`#profile-img`)
+        
 
         // console.log(apiRes.data)
         userName.textContent = apiRes.data.name;
         userEmail.textContent = apiRes.data.email;
         userPassword.textContent = apiRes.password;
-        userImage.value = apiRes.image; 
+        
 
         error.textContent = "";
     })
