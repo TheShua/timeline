@@ -3,13 +3,28 @@ const router = express.Router();
 const Timeline = require("../models/timeline")
 const Event = require("../models/event")
 
-router.get('/', (req, res, next) => {
-	res.render('index', {		
-		stylesheets: ['index-page.css'],
-		scripts: ['home-page.js']
-				
+router.get('/', async (req, res, next) => {
+
+	try {
+		const lastTimeline = await Timeline.find({scope: "public"}).sort({
+		creation_date: -1
+		}).limit(3)
+			.then((dbRes) => {return dbRes})
+		.catch((err)=>{console.log(err)})
+		console.log(lastTimeline)
+		res.render('index', {
+			stylesheets: ['index-page.css'],
+			scripts: ['home-page.js'],
+			timelines: lastTimeline, 
+		});	
+	}
+	catch (err) { 
+		console.log(err)
+	 }
+
+
 	});
-});
+	
 	
 
 
@@ -19,7 +34,7 @@ router.get('/', (req, res, next) => {
 
 // 	Timeline.find().sort({
 // 		creation_date: -1
-// 	})
+// 	}).limit(3)
 // 		.then((dbRes) => {
 // 			const timeline = dbRes[0]
 // 			Event.find({ timeline: timeline._id })

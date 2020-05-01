@@ -1,24 +1,15 @@
 <div id="big-wrap">
 
-<div id="flex-div" class="petit-wrap">
-
-    
-    <h2>Discover Timeline<span>CREATOR</span></h2>
-    
+    <div id="flex-div" class="petit-wrap">
+        <h2>Discover Timeline<span>CREATOR</span></h2>
         <p>TimelineCREATOR is visual interface that allows you to create the timeline you want.
-           
             A timeline is a simple tool but can be very powerful for your personal and professional use.
-            
             TimelineCREATOR will help you generate the perfect timeline to manage your projects more smoothly.</p>
-
-
         <span id='timeLine-view'></span>
-
-
     </div>
 
     <div class="list-type1 petit-wrap">
-    <h2>How does it work?</h2>
+        <h2>How does it work?</h2>
         <ol>
             <li>Gather and sort data by earliest dates</li>
             <li> Preview your timeline</li>
@@ -26,6 +17,23 @@
             <li> Share it !</li>
             <li><a href="/user/signup">Don't wait and create your account</a></li>
         </ol>
+    </div>
+
+    <div class="petit-wrap" id="list-timeline">
+        <h2>See the last <br> public timelines! </h2>
+        <article>
+            <ol>
+            {{#each timelines}}
+                <a href=" /timeline/{{this._id}}">
+                    <li>
+                        <i class="fas fa-arrow-circle-right"></i>
+                        {{this.title}}
+                    </li>
+                </a>
+        
+            {{/each}}
+            </ol>
+        </article>
     </div>
 
 </div>
