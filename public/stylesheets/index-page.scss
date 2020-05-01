@@ -1,3 +1,135 @@
 @import 'global.scss';
 
 
+#big-wrap{
+
+   
+    width: 100vw;
+    display: flex;
+    justify-content: space-evenly;
+    // flex-direction: column;
+    margin-top: 50px;
+    align-content: center;
+
+
+.petit-wrap{
+    margin: 20px 20px 30px 20px;
+    width: 60vw;
+    height: 50vh;
+    margin-left: 40px;
+    
+}
+
+ img {
+     width: 70%;
+     height: 70%;
+
+ }
+    
+
+h2 {
+    color: $color4;
+    font-family: 'Bebas Neue', serif;
+    text-shadow: 5px 5px 0 $color1;
+    font-size: 3em;
+    margin-bottom: 20px;
+    padding-right: 40px;
+    font-size: 40px;
+
+    >span{
+        color:#d9145c;
+    }
+    
+}
+
+p{
+    color: $color4;
+    font-size: 17px;
+    font-weight: 20px;
+    text-align: start;
+    line-height: 22px;
+}
+}
+
+
+#flex-div {
+    
+    display: flex;
+    align-self: flex-start;
+    align-items: center;
+    
+    
+
+    >*{
+        margin-top: 10px;
+    }
+}
+
+.list-type1 {
+   
+    align-self: center;
+    padding-right: 40px;
+    width: 400px;
+    margin: 0 auto;
+
+   
+}
+
+.list-type1 ol {
+    counter-reset: li;
+    list-style: none;
+    font-size: 15px;
+    padding: 0;
+    margin-bottom: 4em;
+
+    li {
+        position: relative;
+        display: block;
+        padding: .4em .4em .4em 2em;
+        *padding: .4em;
+        margin: .5em 0;
+        background: #252359;
+        color: #d9145c;
+        text-decoration: none;
+        -moz-border-radius: .3em;
+        -webkit-border-radius: .3em;
+        border-radius: 10em;
+        transition: all .2s ease-in-out;
+
+        &:hover {
+            background: #f2e1ac;
+            text-decoration: none;
+            transform: scale(1.1);
+        }
+
+        &:before {
+            content: counter(li);
+            counter-increment: li;
+            position: absolute;
+            left: -1.3em;
+            top: 50%;
+            margin-top: -1.3em;
+            background: #d9145c;
+            height: 2em;
+            width: 2em;
+            line-height: 2em;
+            border: .3em solid #fff;
+            text-align: center;
+            font-weight: bold;
+            -moz-border-radius: 2em;
+            -webkit-border-radius: 2em;
+            border-radius: 2em;
+            color: #FFF;
+
+        }
+
+        >a{
+            text-decoration: none;
+            color: #d9145c;
+        }
+    }
+
+}
+
+
+
