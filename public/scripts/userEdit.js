@@ -13,18 +13,24 @@ const editUser =(e)=>{
     const nameInputValue= document.getElementById("input-name").value
     const emailInputValue = document.getElementById("input-email").value
     const passwordInputValue = document.getElementById("input-password").value
-    const imageInputValue = document.getElementById("profile-img").value
+    const imageInputValue = document.getElementById("photo").files[0]
 
 
     const id = document.getElementById("form-profile").getAttribute("data-userId");
-
-    axios
-    .patch("/api/user/" + id, {
+    const info = {
         name: nameInputValue,
         email: emailInputValue,
         password: passwordInputValue,
-        
-    })
+        photo: imageInputValue,
+
+    }
+    const fd = new FormData();
+    for (let key in info) {
+        fd.append(key,info[key])
+    }
+
+    axios
+    .patch("/api/user/" + id, fd)
     .then((apiRes)=>{
         const userName= document.querySelector(`#input-name`)
         const userEmail = document.querySelector(`#input-email`)

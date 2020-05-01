@@ -15,7 +15,9 @@
             <li> Preview your timeline</li>
             <li> Edit it as much as you want </li>
             <li> Share it !</li>
+            {{#unless isLoggedIn}}
             <li><a href="/user/signup">Don't wait and create your account</a></li>
+            {{/unless}}
         </ol>
     </div>
 
