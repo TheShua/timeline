@@ -13,6 +13,7 @@ const editUser =(e)=>{
     const nameInputValue= document.getElementById("input-name").value
     const emailInputValue = document.getElementById("input-email").value
     const passwordInputValue = document.getElementById("input-password").value
+    const imageInputValue = document.getElementById("profile-img").value
 
 
     const id = document.getElementById("form-profile").getAttribute("data-userId");
@@ -21,26 +22,25 @@ const editUser =(e)=>{
     .patch("/api/user/" + id, {
         name: nameInputValue,
         email: emailInputValue,
-        password: passwordInputValue
+        password: passwordInputValue,
+        image: imageInputValue,
     })
     .then((apiRes)=>{
         const userName= document.querySelector(`#input-name`)
         const userEmail = document.querySelector(`#input-email`)
         const userPassword = document.querySelector(`#input-password`)
+        const userImage = document.querySelector(`#profile-img`)
 
         // console.log(apiRes.data)
         userName.textContent = apiRes.data.name;
         userEmail.textContent = apiRes.data.email;
         userPassword.textContent = apiRes.password;
+        userImage.value = apiRes.image; 
 
         error.textContent = "";
     })
         .catch((apiErr) => {
-    
-            error.textContent = apiErr.response.data.message;
-
-
-        
+            error.textContent = apiErr.response.data.message;        
     });
 
 } ;

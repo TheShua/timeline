@@ -32,14 +32,7 @@ router.patch("/:id", uploadCloud.single("photo"), async (req, res) => {
         
         if (findEmail) {
             res.status(500).json({message: "Email already taken, sorry" })
-            
                     }
-        
-                    
-                
-                
-                
-                console.log(findEmail)
 
                 const salt = bcrypt.genSaltSync(bcryptSalt);
                 const password = req.body.password;
@@ -52,12 +45,13 @@ router.patch("/:id", uploadCloud.single("photo"), async (req, res) => {
                     password: hashPass
                 }
 
-                if (req.file) {
-                    updatedUser.image = req.file.secure_url
-                }
+        if (req.file) { 
+            updatedUser.image = req.file.secure_url;
+        }
+        
+        console.log(req.file)
 
 
-                console.log(updatedUser)
 
                 User.findByIdAndUpdate(req.params.id, updatedUser, {
                         new: true
@@ -76,10 +70,6 @@ router.patch("/:id", uploadCloud.single("photo"), async (req, res) => {
                 console.log(err)
             }
 })
-
-
-        //
-
 
 
 

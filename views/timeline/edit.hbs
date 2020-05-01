@@ -21,15 +21,14 @@
                     <label class="inline" for="scope">Scope</label>
                     <select id="scope" name="scope">
                         <option {{#compare timeline.scope "public"}}selected{{/compare}} value="public">Public</option>
-                        <option {{#compare timeline.scope "private"}}selected{{/compare}} value="private">Private</option>
+                        <option {{#compare timeline.scope "private"}}selected{{/compare}} value="private">Private
+                        </option>
                     </select>
                 </div>
-                {{!-- <p>Collaborators</p> --}}
                 <div class="element text">
                     <label class="inline" for="description">Description</label>
                     <textarea id="description" name="description">{{timeline.description}}</textarea>
                 </div>
-
                 <div class="buttons">
                     <button class="save" type="text">Save</button>
                     <button class="view" type="text">
@@ -50,16 +49,16 @@
             <input type="checkbox" id="addEventTab" class="trick">
             <div class="tab">
                 <div class="element">
-                    <label class="inline" for="title">Title</label>
-                    <input type="text" name="title" id="title" placeholder="Title">
+                    <label class="inline" for="title_new">Title</label>
+                    <input type="text" name="title" id="title_new" placeholder="Title">
                 </div>
-                <div class="element hidden">
-                    <label class="inline" for="image">Image</label>
-                    <input type="text" name="image" id="image" placeholder="image url">
+                <div class="element">
+                    <label class="inline" for="image_event">Image</label>
+                    <input id="image_event" name="image" type="file">
                 </div>
                 <div class="element text">
-                    <label class="inline" for="content">Content</label>
-                    <textarea name="content" id="content"></textarea>
+                    <label class="inline" for="content_new">Content</label>
+                    <textarea name="content" id="content_new"></textarea>
                 </div>
                 <div class="element picker">
                     <div class="color-picker">
@@ -84,33 +83,12 @@
                     <div class="time" data-time="start">
                         <h5>Time Start</h5>
                         <div>
-                            <input type="number" class="datedata last-show" name="time_start_year" id="time_start_year" placeholder="YYYY">
-                            <input type="number" class="datedata" name="time_start_month" id="time_start_month" min="1" max="12" placeholder="MM">
-                            <input type="number" class="datedata" name="time_start_day" id="time_start_day" min="1" max="31" placeholder="DD">
-                            <input type="number" class="datedata" name="time_start_hour" id="time_start_hour" min="0" max="23" placeholder="HH">
-                            <input type="number" class="datedata" name="time_start_minute" id="time_start_minute" min="0" max="59" placeholder="mm">
+                            <input type="number" class="datedata last-show" name="time_start_year" id="time_start_year_{{this.id}}" placeholder="YYYY">
+                            <input type="number" class="datedata" name="time_start_month" id="time_start_month_{{this.id}}" min="1" max="12" placeholder="MM">
+                            <input type="number" class="datedata" name="time_start_day" id="time_start_day_{{this.id}}" min="1" max="31" placeholder="DD">
+                            <input type="number" class="datedata" name="time_start_hour" id="time_start_hour_{{this.id}}" min="0" max="23" placeholder="HH">
+                            <input type="number" class="datedata" name="time_start_minute" id="time_start_minute_{{this.id}}" min="0" max="59" placeholder="mm">
                         </div>
-
-                        {{!-- <div>
-                            <label for="time_start_year">Year</label>
-                            <input type="number" name="time_start_year" id="time_start_year" placeholder="YYYY">
-                        </div>
-                        <div>
-                            <label for="time_start_month">Month</label>
-                            <input type="number" name="time_start_month" id="time_start_month" min="1" max="12">
-                        </div>
-                        <div>
-                            <label for="time_start_day">Day</label>
-                            <input type="number" name="time_start_day" id="time_start_day" min="1" max="31">
-                        </div>
-                        <div>
-                            <label for="time_start_hour">Hour</label>
-                            <input type="number" name="time_start_hour" id="time_start_hour" min="0" max="23">
-                        </div>
-                        <div>
-                            <label for="time_start_minute">Minute</label>
-                            <input type="number" name="time_start_minute" id="time_start_minute" min="0" max="59">
-                        </div> --}}
                     </div>
                     <div class="time" data-time="end">
                         <h5>Time End</h5>
@@ -121,26 +99,6 @@
                             <input type="number" class="datedata" name="time_end_hour" id="time_end_hour" min="0" max="23" placeholder="HH">
                             <input type="number" class="datedata" name="time_end_minute" id="time_end_minute" min="0" max="59" placeholder="mm">
                         </div>
-                        {{!-- <div>
-                            <label for="time_end_year">Year</label>
-                            <input type="number" name="time_end_year" id="time_end_year">
-                        </div>
-                        <div>
-                            <label for="time_end_month">Month</label>
-                            <input type="number" name="time_end_month" id="time_end_month" min="1" max="12">
-                        </div>
-                        <div>
-                            <label for="time_end_day">Day</label>
-                            <input type="number" name="time_end_day" id="time_end_day" min="1" max="31">
-                        </div>
-                        <div>
-                            <label for="time_end_hour">Hour</label>
-                            <input type="number" name="time_end_hour" id="time_end_hour" min="0" max="23">
-                        </div>
-                        <div>
-                            <label for="time_end_minute">Minute</label>
-                            <input type="number" name="time_end_minute" id="time_end_minute" min="0" max="59">
-                        </div> --}}
                         <input type="hidden" name="timeline" value="{{timeline._id}}">
                     </div>
                 </div>
@@ -150,110 +108,101 @@
             </div>
         </form>
     </div>
+
+    {{!-- event list --}}
+    {{!-- event list --}}
+    {{!-- event list --}}
+
     <div id="event-list">
         <label class="title" for="eventsTab">
             <h3>Events list</h3>
         </label>
         <input type="checkbox" id="eventsTab" class="trick">
         <div class="tab">
+
+            {{!-- for each --}}
+            {{!-- for each --}}
+            {{!-- for each --}}
+
             {{#each events}}
-            <form class="event-card">
-                <h4>{{this.title}}</h4>
-                <input class="event-toggle-checkbox" type="checkbox" id="title-toggle-{{this.id}}">
-                <label for="title-toggle-{{this.id}}">
-                    <p class="edit">Edit</p>
-                    <p class="close">Close</p>
-                </label>
-                <label for="title">Title</label>
-                <input type="text" name="title" id="title" value="{{this.title}}">
-                <label for="image">Image</label>
-                <input type="text" name="image" id="image" value="{{this.image}}">
-                <label for="content">Content</label>
-                <textarea name="content" id="content">{{this.content}}</textarea>
-                <div class="margin-top color-picker">
-                    <label>Color</label>
-                    <input type="radio" {{#compare this.color "red"}}checked{{/compare}} id="red-{{this.id}}" name="color" value="red">
-                    <label class="color-choice red" for="red-{{this.id}}"></label>
-                    <input type="radio" {{#compare this.color "blue"}}checked{{/compare}} id="blue-{{this.id}}" name="color" value="blue">
-                    <label class="color-choice blue" for="blue-{{this.id}}"></label>
-                    <input type="radio" {{#compare this.color "yellow"}}checked{{/compare}} id="yellow-{{this.id}}" name="color" value="yellow">
-                    <label class="color-choice yellow" for="yellow-{{this.id}}"></label>
-                    <input type="radio" {{#compare this.color "green"}}checked{{/compare}} id="green-{{this.id}}" name="color" value="green">
-                    <label class="color-choice green" for="green-{{this.id}}"></label>
-                </div>
-                <div class="time">
-                    {{#if this.time_end.year}}
-                    <h5>Time Start</h5>
-                    {{else}}
-                    <h5>Time</h5>
-                    {{/if}}
-                    <div>
-                        <input type="number" class="datedata last-show" name="time_start_year" id="time_start_year" placeholder="YYYY" value="{{this.time_start.year}}">
-                        <input type="number" class="datedata" name="time_start_month" id="time_start_month" min="1" max="12" placeholder="MM" value="{{this.time_start.month}}">
-                        <input type="number" class="datedata" name="time_start_day" id="time_start_day" min="1" max="31" placeholder="DD" value="{{this.time_start.day}}">
-                        <input type="number" class="datedata" name="time_start_hour" id="time_start_hour" min="0" max="23" placeholder="HH" value="{{this.time_start.hour}}">
-                        <input type="number" class="datedata" name="time_start_minute" id="time_start_minute" min="0" max="59" placeholder="mm" value="{{this.time_start.minute}}">
+            <label class="delete-{{this.id}}" for="event-list-toggle-{{this.id}}">
+                <h4 id="title-{{this.id}}">{{this.title}}</h4>
+            </label>
+            <input type="radio" name="event-list-toggle" id="event-list-toggle-{{this.id}}" class="event-list-toggle delete-{{this.id}}">
+            <div class="delete-{{this.id}}" id="edit-event-{{this.id}}" class="{{#compare timeline.template "vertical_flat"}}flat{{/compare}}">
+                <form>
+                    <div class="element">
+                        <label class="inline" for="title_{{this.id}}">Title</label>
+                        <input type="text" name="title" value="{{this.title}}" id="title_{{this.id}}" placeholder="Title">
                     </div>
-                    {{!-- 
-                    <div>
-                        <label for="time_start_year">Year</label>
-                        <input type="number" name="time_start_year" id="time_start_year" value="{{this.time_start.year}}">
+                    <div class="element">
+                        <label class="inline" for="image_event_{{this.id}}">Image</label>
+                        <input id="image_event_{{this.id}}" name="image" type="file">
+                        {{!-- {{#if this.image}}
+                        <img src="{{this.image}}" style="display: block" alt="" height="40px" width="100%">
+                        {{/if}} --}}
                     </div>
-                    <div>
-                        <label for="time_start_month">Month</label>
-                        <input type="number" name="time_start_month" id="time_start_month" min="1" max="12" value="{{this.time_start.month}}">
+                    <div class="element text">
+                        <label class="inline" for="content_{{this.id}}">Content</label>
+                        <textarea name="content" id="content_{{this.id}}">{{this.content}}</textarea>
                     </div>
-                    <div>
-                        <label for="time_start_day">Day</label>
-                        <input type="number" name="time_start_day" id="time_start_day" min="1" max="31" value="{{this.time_start.day}}">
+                    <div class="element picker">
+                        <div class="color-picker">
+                            <label class="inline">Color</label>
+                            <input type="radio" {{#compare this.color "red"}}checked{{/compare}} id="red_{{this.id}}" name="color" value="red">
+                            <label class="color-choice red" for="red_{{this.id}}"></label>
+                            <input type="radio" {{#compare this.color "blue"}}checked{{/compare}} id="blue_{{this.id}}" name="color" value="blue">
+                            <label class="color-choice blue" for="blue_{{this.id}}"></label>
+                            <input type="radio" {{#compare this.color "yellow"}}checked{{/compare}} id="yellow_{{this.id}}" name="color" value="yellow">
+                            <label class="color-choice yellow" for="yellow_{{this.id}}"></label>
+                            <input type="radio" {{#compare this.color "green"}}checked{{/compare}} id="green_{{this.id}}" name="color" value="green">
+                            <label class="color-choice green" for="green_{{this.id}}"></label>
+                        </div>
                     </div>
-                    <div>
-                        <label for="time_start_hour">Hour</label>
-                        <input type="number" name="time_start_hour" id="time_start_hour" min="0" max="23" value="{{this.time_start.hour}}">
+                    <div class="time-lord">
+                        <h4 class="isnt-span">Time</h4>
                     </div>
-                    <div>
-                        <label for="time_start_minute">Minute</label>
-                        <input type="number" name="time_start_minute" id="time_start_minute" min="0" max="59" value="{{this.time_start.minute}}">
-                    </div> --}}
-                </div>
-                {{#if this.time_end.year}}
-                <div class="time">
-                    <h5>Time End</h5>
-                    <div>
-                        <input type="number" class="datedata last-show" name="time_end_year" id="time_end_year" placeholder="YYYY" value="{{this.time_end.year}}">
-                        <input type="number" class="datedata" name="time_end_month" id="time_end_month" min="1" max="12" placeholder="MM" value="{{this.time_end.month}}">
-                        <input type="number" class="datedata" name="time_end_day" id="time_end_day" min="1" max="31" placeholder="DD" value="{{this.time_end.month}}">
-                        <input type="number" class="datedata" name="time_end_hour" id="time_end_hour" min="0" max="23" placeholder="HH" value="{{this.time_end.day}}">
-                        <input type="number" class="datedata" name="time_end_minute" id="time_end_minute" min="0" max="59" placeholder="mm" value="{{this.time_end.hour}}">
+                    <div class="human">
+                        <div class="time" data-time="start">
+                            {{#if this.time_end.year}}
+                            <h5>Time Start</h5>
+                            {{else}}
+                            <h5>Time</h5>
+                            {{/if}}
+                            <div>
+                                <input type="number" value="{{this.time_start.year}}" class="datedata last-show" name="time_start_year" id="time_start_year_{{this.id}}" placeholder="YYYY">
+                                <input type="number" value="{{this.time_start.month}}" class="datedata" name="time_start_month" id="time_start_month_{{this.id}}" min="1" max="12" placeholder="MM">
+                                <input type="number" value="{{this.time_start.day}}" class="datedata" name="time_start_day" id="time_start_day_{{this.id}}" min="1" max="31" placeholder="DD">
+                                <input type="number" value="{{this.time_start.hour}}" class="datedata" name="time_start_hour" id="time_start_hour_{{this.id}}" min="0" max="23" placeholder="HH">
+                                <input type="number" value="{{this.time_start.minute}}" class="datedata" name="time_start_minute" id="time_start_minute_{{this.id}}" min="0" max="59" placeholder="mm">
+                            </div>
+                        </div>
+                        {{#if this.time_end.year}}
+                        <div class="time" data-time="end">
+                            <h5>Time End</h5>
+                            <div>
+                                <input type="number" value="{{this.time_end.year}}" class="datedata last-show" name="time_end_year" id="time_end_year_{{this.id}}" placeholder="YYYY">
+                                <input type="number" value="{{this.time_end.month}}" class="datedata" name="time_end_month" id="time_end_month_{{this.id}}" min="1" max="12" placeholder="MM">
+                                <input type="number" value="{{this.time_end.day}}" class="datedata" name="time_end_day" id="time_end_day_{{this.id}}" min="1" max="31" placeholder="DD">
+                                <input type="number" value="{{this.time_end.hour}}" class="datedata" name="time_end_hour" id="time_end_hour_{{this.id}}" min="0" max="23" placeholder="HH">
+                                <input type="number" value="{{this.time_end.minute}}" class="datedata" name="time_end_minute" id="time_end_minute_{{this.id}}" min="0" max="59" placeholder="mm">
+                            </div>
+                        </div>
+                        {{/if}}
                     </div>
-                    {{!-- <div>
-                        <label for="time_end_year">Year</label>
-                        <input type="number" name="time_end_year" id="time_end_year" value="{{this.time_end.year}}">
+                    <input type="hidden" name="timeline" value="{{timeline._id}}">
+                    <div class="buttons">
+                        <button class="edit" data-id={{this._id}}>Save</button>
+                        <button class="delete" data-id={{this._id}}>Delete</button>
                     </div>
-                    <div>
-                        <label for="time_end_month">Month</label>
-                        <input type="number" name="time_end_month" id="time_end_month" min="1" max="12" value="{{this.time_end.month}}">
-                    </div>
-                    <div>
-                        <label for="time_end_day">Day</label>
-                        <input type="number" name="time_end_day" id="time_end_day" min="1" max="31" value="{{this.time_end.day}}">
-                    </div>
-                    <div>
-                        <label for="time_end_hour">Hour</label>
-                        <input type="number" name="time_end_hour" id="time_end_hour" min="0" max="23" value="{{this.time_end.hour}}">
-                    </div>
-                    <div>
-                        <label for="time_end_minute">Minute</label>
-                        <input type="number" name="time_end_minute" id="time_end_minute" min="0" max="59" value="{{this.time_end.minute}}">
-                    </div> --}}
-                </div>
-                {{/if}}
-                <div class="buttons">
-                    <button class="edit" data-id={{this._id}}>Save</button>
-                    <button class="delete" data-id={{this._id}}>Delete</button>
-                </div>
-            </form>
+                </form>
+            </div>
             {{/each}}
+
+            {{!-- end for each --}}
+            {{!-- end for each --}}
+            {{!-- end for each --}}
+
         </div>
     </div>
 </aside>

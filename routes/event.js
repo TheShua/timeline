@@ -1,6 +1,9 @@
 const express = require(`express`);
 const router = express.Router();
 const Event = require("../models/event");
+const multer = require("multer");
+const upload = multer();
+const uploadCloud = require("../config/cloudinary.js");
 
 // Create
 
@@ -20,6 +23,31 @@ router.get(`/:id`, (req, res, next) => {
 });
 
 // Update
+
+router.post(`/:id/image`, uploadCloud.single("image"), (req, res, next) => {
+  timeline = {};
+  if (req.file) {
+    console.log(req.file.url);
+    console.log(req.params.id);
+    // timeline.image = req.file.url;
+    Event.findByIdAndUpdate(
+      req.params.id,
+      { image: req.file.url },
+      {
+        new: true,
+      }
+    )
+      .then((dbRes) => {
+        res.status(201).json(dbRes);
+        console.log(dbRes);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  } else {
+    res.status(201);
+  }
+});
 
 router.post(`/:id`, (req, res, next) => {
   Event.findByIdAndUpdate(req.params.id, req.body, { new: true })

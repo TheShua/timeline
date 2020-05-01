@@ -9,7 +9,7 @@
 
         <div class="element">
             <label for="profile-img"> <img src="{{user.image}}" alt="profile image"></label>
-            <input style="display:none" type="file" id="profile-img" name="pic">
+            <input style="display:none" type="file" id="profile-img" name="photo" value="{{user.image}}">
         </div>
 
 
@@ -25,7 +25,7 @@
 
         <div class="element label-profile" id="div-password">
 
-            <input id="input-password" type="text" name="password" value="password" />
+            <input id="input-password" type="text" name="password" value="" />
             <span class="visible">
                 <i class="fa eye fa-eye-slash"></i>
                 {{!-- <i class="fas fa-eye"></i> --}}
