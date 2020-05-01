@@ -7,13 +7,12 @@
   <div class="containt">
     <div class="bars">
       {{#each events}}
-      <div class="bar {{this.color}} {{#unless this.endRow}}point{{/unless}}"
-        style="grid-row-start: {{this.startRow}}; {{#if this.endRow}}grid-row-end: {{this.endRow}}{{/if}}">
+      <div class="bar {{this.color}} {{#unless this.endRow}}point{{/unless}}" style="grid-row-start: {{this.startRow}}; {{#if this.endRow}}grid-row-end: {{this.endRow}}{{/if}}">
         <div class="content">
           <div class="head">
             <h3>{{this.title}}</h3>
           </div>
-          <div class="icon text-yellow">T</div>
+          <div class="icon text-{{this.color}}">T</div>
           <h4>Category</h4>
           <p>{{this.content}}</p>
         </div>

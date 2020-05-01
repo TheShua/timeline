@@ -79,6 +79,7 @@
 		}
 	}
 
+	$blue: blue;
 	$yellow: yellow;
 	$red: red;
 	$green: green;
@@ -96,6 +97,19 @@
 	.text-yellow {
 		color: $yellow;
 		background-color: $yellow !important;
+	}
+
+	.blue {
+		background-color: $blue;
+
+		.content {
+			border-bottom: 5px solid $blue;
+		}
+	}
+
+	.text-blue {
+		color: $blue;
+		background-color: $blue !important;
 	}
 
 	.pink {
