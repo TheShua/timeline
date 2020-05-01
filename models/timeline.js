@@ -20,7 +20,7 @@ const timelineSchema = new mongoose.Schema({
         type: String,
         enum: ["minutes", "days", "months", "years"]
     }, 
-    image: String, 
+    image: { type: String, default: "../public/medias/img/compass.jpeg"}, 
     favorite: Boolean
 })
 
