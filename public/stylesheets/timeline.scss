@@ -52,13 +52,24 @@
 				position: absolute;
 				top: -20px;
 				right: -20px;
-				background: radial-gradient($color3, $color1);
+				// background: radial-gradient($color3, $color1);
+				background: black;
 				width: 60px;
 				border: 4px solid $color4;
 				line-height: 52px;
 				border-radius: 50%;
 				text-align: center;
 				font-weight: 900;
+			}
+
+			h4 {
+				margin-left: 1em;
+				font-size: 1.1em;
+				font-weight: 700;
+			}
+
+			p {
+				padding: 1em;
 			}
 		}
 
@@ -68,7 +79,7 @@
 		}
 	}
 
-	$yellow: cyan;
+	$yellow: yellow;
 	$red: red;
 	$green: green;
 	$orange: orange;
@@ -84,6 +95,7 @@
 
 	.text-yellow {
 		color: $yellow;
+		background-color: $yellow !important;
 	}
 
 	.pink {
@@ -96,6 +108,7 @@
 
 	.text-pink {
 		color: $pink;
+		background-color: $pink !important;
 	}
 
 	.orange {
@@ -108,6 +121,7 @@
 
 	.text-orange {
 		color: $orange;
+		background-color: $orange !important;
 	}
 
 	.red {
@@ -120,6 +134,7 @@
 
 	.text-red {
 		color: $red;
+		background-color: $red !important;
 	}
 
 	.green {
@@ -132,5 +147,6 @@
 
 	.text-green {
 		color: $green;
+		background-color: $green !important;
 	}
 }
